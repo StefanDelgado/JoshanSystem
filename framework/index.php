@@ -1,7 +1,4 @@
 <?php
-$_SESSION['login_time'] = time();
-
-
 include_once 'classes/class.user.php';
 include_once 'classes/class.appointment.php';
 include 'config/config.php';
@@ -13,28 +10,9 @@ $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : 
 $user = new User();
 $appointment = new Appointment();
 if(!$user->get_session()){
-	header("location: logout.php");
+	header("location: login.php");
 }
 $user_id = $user->get_user_id($_SESSION['user_email']);
-
-function is_session_timeout() {
-    $timeout = 60 * 1; // Set timeout to 15 minutes
-    $current_time = time();
-    $login_time = $_SESSION['login_time'];
-    $time_difference = $current_time - $login_time;
-
-    if ($time_difference > $timeout) {
-        return true;
-    } else {
-        return false;
-    }
-}
-if (is_session_timeout()) {
-    session_destroy();
-} else if (!isset($_SESSION["username"])) {  // not logged in, redirect
-    header("location: logout.php");
-}
-var_dump(is_session_timeout());
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,17 +28,24 @@ var_dump(is_session_timeout());
 </head>
 <body>
 
-    <div id="header">
-      <h2>Welcome *User* Access Level: *Access Level*</h2>
+
+<header class="index-header">
+    <div class="container">
+        <h2>Welcome *User* Access Level: *Access Level*</h2>
     </div>
-<div id="wrapper">
-  <div id="menu">
-      <a href="index.php">Home</a> | 
-      <a href="index.php?page=appointment">Appointment</a> | 
-      <a href="#">Link 4</a> |
-      <a href="index.php?page=settings">Settings</a> | <a href="logout.php" class="move-right">Log Out</a>
-  </div>
-  <div id="content">
+</header>
+
+<nav class="index-navbar">
+    <div class="container">
+        <a href="index.php" class="<?php echo ($page === '' || $page === 'home') ? 'active' : ''; ?>">Home</a> | 
+        <a href="index.php?page=appointment" class="<?php echo ($page === 'appointment') ? 'active' : ''; ?>">Appointment</a> | 
+        <a href="#" class="<?php echo ($page === 'link4') ? 'active' : ''; ?>">Link 4</a> |
+        <a href="index.php?page=settings" class="<?php echo ($page === 'settings') ? 'active' : ''; ?>">Settings</a> |
+        <a href="logout.php" class="move-right">Log Out</a>
+    </div>
+</nav>
+
+<div class="index-content">
     <?php
 
       switch($page){
