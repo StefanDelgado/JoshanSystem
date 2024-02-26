@@ -2,36 +2,6 @@
 include_once 'classes/class.user.php';
 include_once 'classes/class.appointment.php';
 include 'config/config.php';
-if(session_status() == PHP_SESSION_NONE){
-    session_start();
-}
-$_SESSION['login_time'] = time();
-
-function is_session_timeout() {
-    $timeout = 60 * 1; // Set timeout to 15 minutes
-    $current_time = time();
-    $login_time = $_SESSION['login_time'];
-    $time_difference = $current_time - $login_time;
-
-    if ($time_difference > $timeout) {
-        session_destroy();
-        return true;
-    } else {
-        return false;
-    }
-}
-
-if (is_session_timeout()) {
-    header("location: logout.php");
-    exit();
-}
-// Tester
-if (is_session_timeout()) {
-    echo "Your session has timed out. Please log in again.";
-} else {
-    echo "Your session is still active.";
-}
-// Time differnce
 
 $page = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
 $subpage = (isset($_GET['subpage']) && $_GET['subpage'] != '') ? $_GET['subpage'] : '';
@@ -43,25 +13,6 @@ if(!$user->get_session()){
 	header("location: login.php");
 }
 $user_id = $user->get_user_id($_SESSION['user_email']);
-
-function is_session_timeout() {
-    $timeout = 60 * 1; // Set timeout to 15 minutes
-    $current_time = time();
-    $login_time = $_SESSION['login_time'];
-    $time_difference = $current_time - $login_time;
-
-    if ($time_difference > $timeout) {
-        return true;
-    } else {
-        return false;
-    }
-}
-if (is_session_timeout()) {
-    session_destroy();
-} else if (!isset($_SESSION["username"])) {  // not logged in, redirect
-    header("location: logout.php");
-}
-var_dump(is_session_timeout());
 ?>
 <!DOCTYPE html>
 <html>
