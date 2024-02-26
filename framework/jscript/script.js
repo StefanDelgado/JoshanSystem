@@ -2,7 +2,7 @@ var dateInput = document.getElementById("date");
   dateInput.min = "<?php echo date('Y-m-d'); ?>";
 
 function openForm(appointmentId, appointmentName, appointmentPurpose, appointmentDate, appointmentTime) {
-  document.getElementById("myForm").style.display = "block";
+  document.getElementById("popup").style.display = "block";
 
   // Set the value of the hidden input field in the edit form
   document.getElementById("appointment_id").value = appointmentId;
@@ -40,7 +40,7 @@ function openForm(appointmentId, appointmentName, appointmentPurpose, appointmen
 
 function closeForm() {
   // Close form
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("popup").style.display = "none";
 }
 
 document.querySelector('form.form-container').addEventListener('submit', function(event) {

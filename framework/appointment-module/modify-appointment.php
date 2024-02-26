@@ -37,8 +37,8 @@ foreach($appointment->list_appointments() as $value){
 
 
 <!-- The form -->
-<div class="form-popup" id="myForm">
-  <form method="POST" action="processes/process.appointment.php?action=update" class="form-container">
+<div class="form-popup" id="popup">
+  <form method="POST" id="myForm" action="processes/process.appointment.php?action=update" class="form-container">
     <h1>Editing Appointment</h1>
     <input type="hidden" id ="appointmentName">
     <input type="hidden" id="appointment_id" name="appointment_id" >
@@ -61,7 +61,7 @@ foreach($appointment->list_appointments() as $value){
       </select>
     </div>
     <div id="button-block">
-      <input type="submit" value="Save" class="btn">
+      <button type="button" class="btn" id="submit-button" onclick="confirmChanges()">Save</button>
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </div>
   </form>

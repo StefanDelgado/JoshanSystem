@@ -1,14 +1,11 @@
-Upcoming Events
-<br><br><br>
-Upcoming appointment
 <div id="subcontent">
     <table id="data-list">
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Purpose</th>
+        <th>Desccription</th>
         <th>date</th>
-        <th>time</th>
+        <th>Event Start time</th>
       </tr>
 <?php
 
