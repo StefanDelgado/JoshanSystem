@@ -10,6 +10,7 @@ Current and upcoming Appointment
         <th>date</th>
         <th>time</th>
         <th>status</th>
+        <th>Action</th>
       </tr>
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
@@ -19,7 +20,8 @@ if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date >= $NOW){
+   if($appointment_date >= $NOW || $appointment_status == "Pending"){
+
   
 ?>
       <tr id=<?php echo $appointment_name;?>>
@@ -29,6 +31,7 @@ foreach($appointment->list_appointments() as $value){
         <td><?php echo $appointment_date;?></td>
         <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
         <td><?php echo $appointment_status; ?></td>
+        <td><button type="button">Confirm</button></td>
 
       </tr>
       <tr>

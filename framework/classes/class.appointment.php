@@ -15,11 +15,13 @@ class appointment{
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 		$NOW = $NOW->format('Y-m-d H:i:s');
+		
+		$status = 'Pending';
 
 		$data = [
-			[$name, $purpose, $date, $time],
+			[$name, $purpose, $date, $time, $status],
 		];
-		$stmt = $this->conn->prepare("INSERT INTO tbl_appointment (appointment_name, appointment_purpose, appointment_date, appointment_time) VALUES (?,?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO tbl_appointment (appointment_name, appointment_purpose, appointment_date, appointment_time, appointment_status) VALUES (?,?,?,?,?)");
 		try {
 			$this->conn->beginTransaction();
 			foreach ($data as $row)
@@ -123,8 +125,10 @@ public function delete_appointment($appointment_id){
 			return true;
 		}else{
 			return false;
-		}
+			session_destroy();
+			}
 	}
+	
 	public function check_login($email,$password){
 		
 		$sql = "SELECT count(*) FROM tbl_users WHERE user_email = :email AND user_password = :password"; 

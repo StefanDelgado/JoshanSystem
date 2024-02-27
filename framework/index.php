@@ -58,6 +58,7 @@ $user_access = $user->get_user_access($user_id);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css?<?php echo time();?>">
+    <link rel="stylesheet" href="css/appointment-css.css?<?php echo time();?>">
     <script src="jscript/script.js"></script>
     <script src="jscript/appointment-script.js"></script>
 </head>
@@ -98,6 +99,7 @@ $user_access = $user->get_user_access($user_id);
             }
     ?>
   </div>
+  
 </div>
 
 </body>
