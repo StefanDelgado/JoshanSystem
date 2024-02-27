@@ -1,11 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
 var dateInput = document.getElementById("date");
   dateInput.min = "<?php echo date('Y-m-d'); ?>";
 
 function openForm(appointmentId, appointmentLastName, appointmentFirstName, appointmentPurpose, appointmentDate, appointmentTime) {
   document.getElementById("popup").style.display = "block";
 
-  // Set the value of the hidden input field in the edit form
+  // Set the value of the hidden input field in the edit forms
   document.getElementById("appointment_id").value = appointmentId;
 
   document.getElementById("lname").value = appointmentLastName; // Set the value of the name input field
@@ -111,4 +110,3 @@ for (var i = 0; i < deleteButtons.length; i++) {
     }
   });
 }
-});
