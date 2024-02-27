@@ -103,6 +103,20 @@ public function delete_appointment($appointment_id){
 		$appointment_time = $q->fetchColumn();
 		return $appointment_time;
 	}
+	function get_appointment_status($id){
+		$sql="SELECT appointment_status FROM tbl_appointment WHERE appointment_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$appointment_status = $q->fetchColumn();
+		if($appointment_status==1){
+			$appointment_status = 'Confirmed';
+			return $appointment_status;
+		} else {
+			$appointment_status = 'Pending';
+			return $appointment_status;
+		}
+		
+	}
 	
 	function get_session(){
 		if(isset($_SESSION['login']) && $_SESSION['login'] == true){

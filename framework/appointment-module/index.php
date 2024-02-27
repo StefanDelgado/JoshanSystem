@@ -1,5 +1,5 @@
 <div id="third-submenu">
-    <a href="index.php?page=appointment&subpage=appointment">List of Appointments</a> | <a href="index.php?page=appointment&subpage=appointment&action=create">Set an Appointment</a> | <a href="index.php?page=appointment&subpage=appointment&action=modify">Modify an Appointment</a> | Search <input type="text"/> 
+    <a href="index.php?page=appointment&subpage=appointment">Current</a> | <a href="index.php?page=appointment&subpage=appointment&action=view">List of Appointments</a> | <a href="index.php?page=appointment&subpage=appointment&action=create">Set an Appointment</a> | <a href="index.php?page=appointment&subpage=appointment&action=modify">Modify an Appointment</a> | Search <input type="text"/> 
 </div>
 <div id="subcontent">
     <?php
