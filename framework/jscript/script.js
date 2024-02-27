@@ -1,13 +1,15 @@
+document.addEventListener("DOMContentLoaded", function() {
 var dateInput = document.getElementById("date");
   dateInput.min = "<?php echo date('Y-m-d'); ?>";
 
-function openForm(appointmentId, appointmentName, appointmentPurpose, appointmentDate, appointmentTime) {
+function openForm(appointmentId, appointmentLastName, appointmentFirstName, appointmentPurpose, appointmentDate, appointmentTime) {
   document.getElementById("popup").style.display = "block";
 
   // Set the value of the hidden input field in the edit form
   document.getElementById("appointment_id").value = appointmentId;
-  document.getElementById("appointmentName").innerHTML = appointmentName;
-  document.getElementById("name").value = appointmentName; // Set the value of the name input field
+
+  document.getElementById("lname").value = appointmentLastName; // Set the value of the name input field
+  document.getElementById("fname").value = appointmentFirstName; // Set the value of the name input field
   document.getElementById("purpose").value = appointmentPurpose; // Set the value of the name input field
   document.getElementById("date").value = appointmentDate; // Set the value of the name input field
   
@@ -26,7 +28,7 @@ function openForm(appointmentId, appointmentName, appointmentPurpose, appointmen
 
   // Send an AJAX request to pass the appointmentName variable to PHP
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'your_php_script.php?jsVariable=' + encodeURIComponent(appointmentName), true);
+  xhr.open('GET', 'your_php_script.php?jsVariable=' + encodeURIComponent(appointmentLastName), true);
   xhr.onload = function() {
     if (xhr.status === 200) {
       console.log('Received from PHP:', xhr.responseText);
@@ -48,7 +50,8 @@ document.querySelector('form.form-container').addEventListener('submit', functio
 
   // Get the updated values from the form fields
   var appointmentId = document.getElementById("appointment_id").value;
-  var name = document.getElementById("name").value;
+  var lastName = document.getElementById("lname").value;
+  var firstName = document.getElementById("fname").value;
   var purpose = document.getElementById("purpose").value;
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
@@ -65,7 +68,7 @@ document.querySelector('form.form-container').addEventListener('submit', functio
       console.log('Error: ' + xhr.statusText);
     }
   };
-  xhr.send('appointment_id=' + appointmentId + '&name=' + name + '&purpose=' + purpose + '&date=' + date + '&time=' + time);
+  xhr.send('appointment_id=' + appointmentId + '&lname=' + lastName + '&fname=' + firstName + '&purpose=' + purpose + '&date=' + date + '&time=' + time);
 });
 
 function deleteAppointment(appointmentId) {
@@ -108,3 +111,4 @@ for (var i = 0; i < deleteButtons.length; i++) {
     }
   });
 }
+});

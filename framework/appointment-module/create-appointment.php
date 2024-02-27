@@ -2,8 +2,11 @@
 <div id="form-block">
     <form method="POST" action="processes/process.appointment.php?action=new">
         <div id="form-block-half">
-            <label for="name">Name</label>
-            <input type="text" id="name" class="input" name="name" placeholder="Your name..">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" class="input" name="lname" placeholder="Your last name..">
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" class="input" name="fname" placeholder="Your first name..">
 
             <label for="purpose">Purpose</label>
             <input type="text" id="purpose" class="input" name="purpose" placeholder="State your purpose..">

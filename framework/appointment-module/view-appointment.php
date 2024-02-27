@@ -34,11 +34,12 @@
     <table id="data-list">
       <tr>
         <th>#</th>
-        <th>Name</th>
+        <th>Last Name</th>
+        <th>First Name</th>
         <th>Purpose</th>
-        <th>date</th>
-        <th>time</th>
-        <th>status</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
       </tr>
 <?php
 
@@ -48,9 +49,10 @@ foreach($appointment->list_appointments() as $value){
    extract($value);
   
 ?>
-      <tr id=<?php echo $appointment_name;?>>
+      <tr id=<?php echo $appointment_lastname;?>>
         <td><?php echo $count;?></td>
-        <td><?php echo $appointment_name;?></td>
+        <td><?php echo $appointment_lastname;?></td>
+        <td><?php echo $appointment_firstname;?></td>
         <td><?php echo $appointment_purpose;?></td>
         <td><?php echo $appointment_date;?></td>
         <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>

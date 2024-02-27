@@ -17,14 +17,14 @@ switch($action){
 
 function create_new_appointment(){
 	$appointment = new Appointment();
-    $name = ucwords($_POST['name']);
+    $lastName = ucwords($_POST['lname']);
+    $firstName = ucwords($_POST['fname']);
     $purpose = ucwords($_POST['purpose']);
     $date = $_POST['date'];
     $time = $_POST['time'];
-    
-    $result = $appointment->new_appointment($name,$purpose,$date,$time);
+    $result = $appointment->new_appointment($lastName,$firstName,$purpose,$date,$time);
     if($result){
-        $id = $appointment->get_appointment_id($name);
+        $id = $appointment->get_appointment_id($lastName);
         header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$id);
     }
 }
@@ -32,13 +32,14 @@ function create_new_appointment(){
 function update_appointment(){
 	$appointment = new appointment();
     $appointment_id = $_POST['appointment_id'];
-    $name = ucwords($_POST['name']);
+    $lastName = ucwords($_POST['lname']);
+    $firstName = ucwords($_POST['fname']);
     $purpose = ucwords($_POST['purpose']);
     $date = $_POST['date'];
     $time = $_POST['time'];
    
     
-    $result = $appointment->update_appointment($appointment_id,$name,$purpose,$date,$time);
+    $result = $appointment->update_appointment($appointment_id,$lastName,$firstName,$purpose,$date,$time);
     if($result){
         header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$appointment_id);
     }

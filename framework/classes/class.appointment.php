@@ -10,7 +10,7 @@ class appointment{
 		
 	}
 	
-	public function new_appointment($name, $purpose, $date, $time){
+	public function new_appointment($lastName, $firstName, $purpose, $date, $time){
 		
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
@@ -19,9 +19,9 @@ class appointment{
 		$status = 'Pending';
 
 		$data = [
-			[$name, $purpose, $date, $time, $status],
+			[$lastName, $firstName, $purpose, $date, $time, $status],
 		];
-		$stmt = $this->conn->prepare("INSERT INTO tbl_appointment (appointment_name, appointment_purpose, appointment_date, appointment_time, appointment_status) VALUES (?,?,?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO tbl_appointment (appointment_lastname, appointment_firstname, appointment_purpose, appointment_date, appointment_time, appointment_status) VALUES (?,?,?,?,?,?)");
 		try {
 			$this->conn->beginTransaction();
 			foreach ($data as $row)
@@ -38,16 +38,16 @@ class appointment{
 
 	}
 
-	public function update_appointment($appointment_id,$name,$purpose, $date, $time){
+	public function update_appointment($appointment_id,$lastName,$firstName,$purpose, $date, $time){
 		
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 		$NOW = $NOW->format('Y-m-d H:i:s');
 
-		$sql = "UPDATE tbl_appointment SET appointment_name=:appointment_name, appointment_purpose=:appointment_purpose, appointment_date=:appointment_date, appointment_time=:appointment_time WHERE appointment_id=:appointment_id";
+		$sql = "UPDATE tbl_appointment SET appointment_lastname=:appointment_lastname, appointment_firstname=:appointment_firstname, appointment_purpose=:appointment_purpose, appointment_date=:appointment_date, appointment_time=:appointment_time WHERE appointment_id=:appointment_id";
 
 		$q = $this->conn->prepare($sql);
-	$q->execute(array(':appointment_name'=>$name, ':appointment_purpose'=>$purpose, ':appointment_date'=>$date, ':appointment_time'=>$time, ':appointment_id'=>$appointment_id));
+	$q->execute(array(':appointment_lastname'=>$lastName,':appointment_firstname'=>$firstName, ':appointment_purpose'=>$purpose, ':appointment_date'=>$date, ':appointment_time'=>$time, ':appointment_id'=>$appointment_id));
 		return true;
 	}
 
@@ -70,15 +70,15 @@ public function delete_appointment($appointment_id){
 	$q->execute(array(':appointment_id'=>$appointment_id));
 	return true;
 }
-	function get_appointment_id($name){
-		$sql="SELECT appointment_id FROM tbl_appointment WHERE appointment_name = :name";	
+	function get_appointment_id($lastName){
+		$sql="SELECT appointment_id FROM tbl_appointment WHERE appointment_lastname = :lastname";	
 		$q = $this->conn->prepare($sql);
-		$q->execute(['name' => $name]);
+		$q->execute(['lastname' => $lastName]);
 		$appointment_id = $q->fetchColumn();
 		return $appointment_id;
 	}
-	function get_appointment_name($id){
-		$sql="SELECT appointment_email FROM tbl_appointment WHERE appointment_id = :id";	
+	function get_appointment_lastName($id){
+		$sql="SELECT appointment_lastName FROM tbl_appointment WHERE appointment_id = :id";	
 		$q = $this->conn->prepare($sql);
 		$q->execute(['id' => $id]);
 		$appointment_email = $q->fetchColumn();
