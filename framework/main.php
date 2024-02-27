@@ -1,4 +1,5 @@
 Upcoming Events
+<br>
 ***WORK IN PROGRESS***
 <br><br><br>
 Upcoming appointment
@@ -37,4 +38,14 @@ foreach($appointment->list_appointments() as $value){
 }
 ?>
     </table>
+    <br><br>
+To do list:<br>
+- Search button functions <br>
+- User should be able to add, edit and delete tasks. <br>
+- Appointment Delete all <br>
+- Events CRUD <br>
+- Access levels <br>
+- Session out <br>
+
+
 </div>

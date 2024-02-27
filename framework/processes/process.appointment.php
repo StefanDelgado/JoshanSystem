@@ -13,6 +13,8 @@ switch($action){
     case 'delete':
         delete_appointment();
 	break;
+    case 'search':
+        search_appointment();
 }
 
 function create_new_appointment(){
@@ -51,5 +53,16 @@ function delete_appointment(){
     $result = $appointment->delete_appointment($appointment_id);
     if ($result) {
         header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id=' . $appointment_id);
+    }
+}
+
+function search_appointment(){
+    $table = $_POST['table'];
+    $sort = $_POST['sort'];
+    $search = $_POST['search'];
+
+    $result = $appointment->search_appointment($table, $sort, $search);
+    if($result){
+        header('location: ../index.php?page=appointment&subpage=appointment&action=view');
     }
 }

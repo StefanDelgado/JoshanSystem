@@ -1,33 +1,27 @@
 <div id="subcontent">
     <div>
-    <button id="myBtn">Open Modal</button>
-    <!-- The Modal -->
+    <button id="myBtn">Search</button>
+
+<!-- The Modal -->
 <div id="myModal" class="modal">
-
-<!-- Modal content -->
-<div class="modal-content">
-  <span class="close">&times;</span>
-  <form>
-  <select>
-    <option>-Enter table-</option>
-    <option>Name</option>
-    <option>Date</option>
-    <option>Time</option>
-    <option>Status</option>
-  </select>
-
-  
-  
-  <select>
-    <option>-Sort-</option>
-    <option>Ascending</option>
-    <option>Decending</option>
-  </select>
-  <input type="text" placeholder="Search.."><br>
-
-  <input  type="submit" value="Submit">
-</form>
-</div>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="search-form" method="POST" action="processes/process.appointment.php?action=search">
+      <select id="table-select">
+        <option value="*">-Enter table-</option>
+        <option value="appointment_lastname">Table 1</option>
+        <option value="appointment_firstname">Table 2</option>
+        <option value="appointment_lastname">Table 3</option>
+      </select>
+      <select id="sort-select">
+        <option>Ascending</option>
+        <option>Decending</option>
+      </select>
+      <input type="text" id="search-input" placeholder="Search..">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 </div>
 
 

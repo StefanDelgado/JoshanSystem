@@ -36,3 +36,15 @@ window.onclick = function(event) {
   }
 }
 });
+
+document.getElementById('search-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Get the form data
+  var table = document.getElementById('table-select').value;
+  var sort = document.getElementById('sort-select').value;
+  var search = document.getElementById('search-input').value;
+
+  // Call the search_appointment function with the form data
+  search_appointment(table, sort, search);
+});
