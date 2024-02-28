@@ -1,5 +1,5 @@
 <div id="third-submenu">
-    <a href="index.php?page=settings&subpage=users">List Users</a> | <a href="index.php?page=settings&subpage=users&action=create">New User</a> | Search <input type="text"/>
+    <a href="index.php?page=settings&subpage=users">List Users</a> | <a href="index.php?page=settings&subpage=users&action=create">New User</a> | <a href="index.php?page=settings&subpage=users&action=create">Create User</a> | <a href="index.php?page=settings&subpage=users&action=create">Edit User</a> | Search <input type="text"/>
 </div>
 <div id="subcontent">
     <?php

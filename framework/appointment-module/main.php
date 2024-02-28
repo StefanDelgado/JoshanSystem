@@ -21,7 +21,7 @@ if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date >= $NOW || $appointment_status == "Pending"){
+   if($appointment_date >= $NOW && $appointment_status == "Pending"){
 
   
 ?>
