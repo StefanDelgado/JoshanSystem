@@ -5,7 +5,7 @@ Current and upcoming Appointment
     <table id="data-list">
       <tr>
         <th>#</th>
-        <th>Lasat Name</th>
+        <th>Last Name</th>
         <th>First Name</th>
         <th>Purpose</th>
         <th>Date</th>

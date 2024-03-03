@@ -219,14 +219,6 @@ input[type=submit]:hover {
   margin: 20px auto 0;
 }
 
-@keyframes glow {
-  from {
-      box-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff;
-  }
-  to {
-      box-shadow: 0 0 20px #007bff, 0 0 30px #007bff, 0 0 40px #007bff;
-  }
-}
 
 
 .brand-block {

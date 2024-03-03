@@ -1,4 +1,15 @@
-Upcoming Events
+
+
+
+      <div class="container">
+        <div class="header">
+          <h1>Welcome to the Admin Panel</h1>
+          <p>This is where your content goes. You can add different sections, tables, forms, etc.</p>
+        </div>
+        <div class="content-container">
+          <div class="content">
+            <!-- Your content here -->
+            Upcoming Events
 <br>
 ***WORK IN PROGRESS***
 <br><br><br>
@@ -49,3 +60,7 @@ To do list:<br>
 
 
 </div>
+            <button class="btn">Click Me</button>
+          </div>
+        </div>
+      </div>
