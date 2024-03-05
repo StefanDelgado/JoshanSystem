@@ -13,6 +13,9 @@ switch($action){
     case 'deactivate':
         deactivate_user();
 	break;
+    case 'profile':
+        profile_user();
+	break;
 }
 
 function create_new_user(){
@@ -51,6 +54,14 @@ function deactivate_user(){
 	$user = new User();
     $user_id = $_POST['userid']; 
     $result = $user->deactivate_user($user_id);
+    if($result){
+        header('location: ../index.php?page=settings&subpage=users&action=profile&id='.$user_id);
+    }
+}
+function profile_user(){
+    $user = new User();
+    $user_id = $_POST['id'];
+    $result = $user->profile_users($user_id);
     if($result){
         header('location: ../index.php?page=settings&subpage=users&action=profile&id='.$user_id);
     }

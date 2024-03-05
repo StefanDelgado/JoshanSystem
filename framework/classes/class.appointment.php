@@ -50,6 +50,19 @@ class appointment{
 	$q->execute(array(':appointment_lastname'=>$lastName,':appointment_firstname'=>$firstName, ':appointment_purpose'=>$purpose, ':appointment_date'=>$date, ':appointment_time'=>$time, ':appointment_id'=>$appointment_id));
 		return true;
 	}
+	// Update status
+public function update_appointment_status($appointment_id,$status){
+    /* Setting Timezone for DB */
+    $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+    $NOW = $NOW->format('Y-m-d H:i:s');
+
+    $sql = "UPDATE tbl_appointment SET appointment_status=:appointment_status WHERE appointment_id=:appointment_id";
+
+    $q = $this->conn->prepare($sql);
+    $q->execute(array(':appointment_status'=>$status,':appointment_id'=>$appointment_id));
+    return true;
+}
+
 
 	public function list_appointments(){
 		$sql="SELECT * FROM tbl_appointment";

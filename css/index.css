@@ -1,0 +1,141 @@
+body {
+  background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/c8d05853519f171166c8f887a87732e28bc72390fcf980bfbcff1bd202789664?apiKey=6c49439103a14152856a78115320c43d&') no-repeat center center fixed;
+  background-size: cover;
+  padding-bottom: 50px;
+  font-family: Zen Kaku Gothic Antique, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 33px 72px 0;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%; /* Make the logo appear as a circle */
+  z-index: 1; /* Ensure logo is above background */
+}
+
+.signup-button,
+.proceed-button {
+  border: 1.5px solid #212121;
+  color: #212121;
+  padding: 21px 43px;
+  text-align: center;
+  letter-spacing: 0.7px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.signup-button:hover,
+.proceed-button:hover {
+  background-color: #212121;
+  color: #fff;
+}
+
+.login-container {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px); /* Apply a blur effect to the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 46px 80px;
+  margin: 49px auto;
+  max-width: 50%;
+  border-radius: 10px;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.login-container:hover {
+  transform: translateY(-5px); /* Move container up on hover */
+}
+
+.title {
+  font-size: 31px;
+  font-weight: bold;
+  color: #000;
+}
+
+.description {
+  color: #757575;
+  margin-top: 9px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+}
+
+label {
+  font-size: 13px;
+  color: #424242;
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #212121;
+  margin-bottom: 16px;
+  transition: border-color 0.3s ease; /* Smooth transition for input border */
+}
+
+input:focus {
+  border-color: #212121; /* Highlight input border on focus */
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-top: 26px;
+  font-size: 14px;
+  color: #616161;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.forgot-password {
+  text-align: right;
+  color: #212121;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+footer {
+  color: #616161;
+  text-align: center;
+  margin-top: 40px;
+  letter-spacing: 0.7px;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 992px) {
+  .login-container {
+    max-width: 100%;
+  }
+
+  header {
+    flex-direction: column;
+  }
+}

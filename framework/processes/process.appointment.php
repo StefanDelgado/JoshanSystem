@@ -13,6 +13,9 @@ switch($action){
     case 'delete':
         delete_appointment();
 	break;
+    case 'update_status':
+        update_appointment_status();
+    break;
     case 'search':
         search_appointment();
 }
@@ -53,6 +56,20 @@ function delete_appointment(){
     $result = $appointment->delete_appointment($appointment_id);
     if ($result) {
         header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id=' . $appointment_id);
+    }
+}
+// Update Status
+function update_appointment_status(){
+    $appointment = new appointment();
+    
+    $appointment_id = $_POST['appointment_id'];
+    print_r("Appointment ID received: $appointment_id");
+    $status = $_POST['appointment_status_approve'];
+   
+    
+    $result = $appointment->update_appointment_status($appointment_id,$status);
+    if($result){
+        header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$appointment_id);
     }
 }
 

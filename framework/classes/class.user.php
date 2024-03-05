@@ -61,6 +61,17 @@ class User{
 			return $data;	
 		}
 }
+public function profile_users($id){
+    $sql = "SELECT * FROM tbl_users WHERE `user_id` = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(empty($data)){
+        return false;
+    }else{
+        return $data;	
+    }
+}
 
 	function get_user_id($email){
 		$sql="SELECT user_id FROM tbl_users WHERE user_email = :email";	
