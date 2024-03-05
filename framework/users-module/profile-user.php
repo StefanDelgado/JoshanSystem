@@ -5,6 +5,7 @@ $user = new User();
 $user->profile_users($user_id);
 $firstName = $user->get_user_firstname($user_id);
 $lastName = $user->get_user_lastname($user_id);
+$email = $user->get_user_email($user_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,9 +40,10 @@ $lastName = $user->get_user_lastname($user_id);
         <p>First Name: <?php echo $firstName;?></p>
         <p>Last Name: <?php echo $lastName;?></p>
         <p>Birthdate: *Insert Birthdate*</p>
+        <p>Gender: *Insert Gender*</p>
       </div>
       <div class="user-info-right">
-        <p>Email: *Insert Email*</p>
+        <p>Email: <?php echo $email;?></p>
         <p>Address: *Insert Address*</p>
         <p>Access Level: *Insert Access*</p>
       </div>
