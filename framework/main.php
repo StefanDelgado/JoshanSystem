@@ -4,7 +4,6 @@
       <div class="container">
         <div class="header">
           <h1>Welcome to the Admin Panel</h1>
-          <p>This is where your content goes. You can add different sections, tables, forms, etc.</p>
         </div>
         <div class="content-container">
           <div class="content">
@@ -25,11 +24,14 @@ Upcoming appointment
         <th>Time</th>
       </tr>
 <?php
+$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW = $NOW->format('Y-m-d');
 
 $count = 1;
 if($appointment->list_appointments() != false){
 foreach($appointment->list_appointments() as $value){
    extract($value);
+   if($appointment_date >= $NOW && $appointment_status == "Approve"){
   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
@@ -43,6 +45,7 @@ foreach($appointment->list_appointments() as $value){
       <tr>
 <?php
  $count++;
+   }
 }
 }else{
   echo "No Record Found.";
@@ -60,7 +63,6 @@ To do list:<br>
 
 
 </div>
-            <button class="btn">Click Me</button>
           </div>
         </div>
       </div>

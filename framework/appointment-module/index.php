@@ -1,6 +1,6 @@
 <div class="container">
 <div id="third-submenu">
-    <a href="index.php?page=appointment&subpage=appointment">Current</a> | <a href="index.php?page=appointment&subpage=appointment&action=view">Records</a> | <a href="index.php?page=appointment&subpage=appointment&action=create">Create</a> | <a href="index.php?page=appointment&subpage=appointment&action=modify">Edit</a>
+    <a href="index.php?page=appointment&subpage=appointment">Pending</a> | <a href="index.php?page=appointment&subpage=appointment&action=view">Records</a> | <a href="index.php?page=appointment&subpage=appointment&action=create">Create</a> | <a href="index.php?page=appointment&subpage=appointment&action=modify">Edit</a>
 </div>
 <div id="subcontent">
     <?php
