@@ -61,6 +61,7 @@ $user_access = $user->get_user_access($user_id);
     <link rel="stylesheet" href="css/main-v1.css?<?php echo time();?>">
     <script src="jscript/script.js"></script>
     <script src="jscript/appointment-script.js"></script>
+    <script src="jscript/user-script.js"></script>
     
 </head>
 <body>

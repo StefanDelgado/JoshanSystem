@@ -1,5 +1,5 @@
 <div id="subcontent">
-    <table id="data-list">
+    <table class="data-table">
       <tr>
         <th>#</th>
         <th>Name</th>

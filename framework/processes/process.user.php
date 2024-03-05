@@ -10,8 +10,8 @@ switch($action){
     case 'update':
         update_user();
 	break;
-    case 'deactivate':
-        deactivate_user();
+    case 'delete':
+        delete_user();
 	break;
     case 'profile':
         profile_user();
@@ -37,25 +37,26 @@ function create_new_user(){
 
 function update_user(){
 	$user = new User();
-    $user_id = $_POST['userid'];
-    $lastname = ucwords($_POST['lastname']);
-    $firstname = ucwords($_POST['firstname']);
-    $access = ucwords($_POST['access']);
+    $user_id = $_POST['user_id'];
+    $lastname = ucwords($_POST['lname']);
+    $firstname = ucwords($_POST['fname']);
+    $access = ucwords($_POST['Access']);
     $nickname = ucwords($_POST['nickname']);
+    $email = ucwords($_POST['email']);
    
     
-    $result = $user->update_user($lastname,$firstname,$nickname,$access,$user_id);
+    $result = $user->update_user($lastname,$firstname, $access, $user_id, $email, $nickname);
     if($result){
-        header('location: ../index.php?page=settings&subpage=users&action=profile&id='.$user_id);
+        header('location: ../index.php?page=settings&subpage=users&action=&id='.$user_id);
     }
 }
 
-function deactivate_user(){
+function delete_user(){
+    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
 	$user = new User();
-    $user_id = $_POST['userid']; 
-    $result = $user->deactivate_user($user_id);
+    $result = $user->delete_user($user_id);
     if($result){
-        header('location: ../index.php?page=settings&subpage=users&action=profile&id='.$user_id);
+        header('location: ../index.php?page=settings&subpage=users&action=&id='.$user_id);
     }
 }
 function profile_user(){

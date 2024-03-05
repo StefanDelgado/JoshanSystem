@@ -3,17 +3,16 @@
 Pending Appointment
 <br>
 <ul class="responsive-table">
-      <li class="table-header">
-    <table id="data-list">
+    <table class="data-table">
       <tr>
-        <div class="col col-1">#</div>
-        <div class="col col-2">Last Name</div>
-        <div class="col col-3">First Name</div>
-        <div class="col col-4">Purpose</div>
-        <div class="col col-5">Date</div>
-        <div class="col col-6">Time</div>
-        <div class="col col-7">Status</div>
-        <div class="col col-8">Action</div>
+        <th>#</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Purpose</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
       </tr>
       </li>
 <?php
@@ -61,7 +60,7 @@ foreach($appointment->list_appointments() as $value){
 Missed appointment
 <br>
 
-    <table id="data-list">
+    <table class="data-table">
       <tr>
         <th>#</th>
         <th>Last Name</th>
@@ -79,7 +78,7 @@ if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date < $NOW){
+   if($appointment_date < $NOW && $appointment_status == "Pending"){
   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>

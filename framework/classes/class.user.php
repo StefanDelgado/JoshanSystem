@@ -36,16 +36,16 @@ class User{
 
 	}
 
-	public function update_user($lastname,$firstname, $access, $id){
+	public function update_user($lastname,$firstname, $access, $id, $email, $nickname){
 		
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 		$NOW = $NOW->format('Y-m-d H:i:s');
 
-		$sql = "UPDATE tbl_users SET user_firstname=:user_firstname,user_lastname=:user_lastname,user_nickname=user_nickname,user_date_updated=:user_date_updated,user_time_updated=:user_time_updated,user_access=:user_access WHERE user_id=:user_id";
+		$sql = "UPDATE tbl_users SET user_lastname=:user_lastname, user_firstname=:user_firstname, user_access=:user_access, user_email=:user_email, user_nickname=:user_nickname WHERE user_id=:user_id";
 
 		$q = $this->conn->prepare($sql);
-		$q->execute(array(':user_firstname'=>$firstname, ':user_lastname'=>$lastname,':user_nickname'=>$nickname,':user_access'=>$access,':user_id'=>$id));
+		$q->execute(array(':user_lastname'=>$lastname,':user_firstname'=>$firstname,':user_access'=>$access,':user_email'=>$email, ':user_nickname'=>$nickname,':user_id'=>$id));
 		return true;
 	}
 
@@ -71,6 +71,12 @@ public function profile_users($id){
     }else{
         return $data;	
     }
+}
+public function delete_user($user_id){
+	$sql = "DELETE FROM tbl_users WHERE user_id = :user_id";
+	$q = $this->conn->prepare($sql);
+	$q->execute(array(':user_id'=>$user_id));
+	return true;
 }
 
 	function get_user_id($email){
