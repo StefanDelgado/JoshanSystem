@@ -1,5 +1,5 @@
 <div id="third-submenu">
-    <a href="index.php?page=settings&subpage=users">List Users</a> | <a href="index.php?page=settings&subpage=users&action=create">New User</a> | <a href="index.php?page=settings&subpage=users&action=create">Create User</a> | <a href="index.php?page=settings&subpage=users&action=create">Edit User</a> | Search <input type="text"/>
+    <a href="index.php?page=settings&subpage=users">List Users</a> | <a href="index.php?page=settings&subpage=users&action=create">New User</a> | <a href="index.php?page=settings&subpage=users&action=create">Create User</a> | <a href="index.php?page=settings&subpage=users&action=modify">Edit User</a> |<a href="index.php?page=settings&subpage=users&action=modify">Edit User</a>
 </div>
 <div id="subcontent">
     <?php
@@ -15,6 +15,9 @@
                 break;
                 case 'result':
                     require_once 'users-module/search-user.php';
+                break;
+                case 'profile':
+                    require_once 'users-module/profile-user.php';
                 break;
                 default:
                     require_once 'users-module/main.php';
