@@ -14,24 +14,38 @@ $lastName = $user->get_user_lastname($user_id);
   <title>Admin Website</title>
   <link rel="stylesheet" href="css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+    }
+    .user-info-left {
+      width: 45%;
+    }
+    .user-info-right {
+      width: 45%;
+    }
+  </style>
 </head>
 <body>
-    <!-- Main Content Area -->
-      <div class="container">
-        <div class="header">
-          <h1>User Profile</h1>
-        </div>
-        <div class="user-info">
-          <h2><?php echo $firstName.' '.$lastName;?></h2>
-          <p>First Name: <?php echo $firstName;?></p>
-          <p>Last Name: <?php echo $lastName;?></p>
-          <p>Birthdate: *Insert Birtdate*</p>
-          <p>Gender: *Insert Gender*</p>
-          <p>Email: *Insert Email*</p>
-          <p>Address: *Insert Address*</p>
-          <p>Access Level: *Insert Access*</p>
-          
-        </div>
+  <!-- Main Content Area -->
+  <div class="container">
+    <div class="header">
+      <h1>User Profile</h1>
+    </div>
+    <div class="user-info">
+      <div class="user-info-left">
+        <h2><?php echo $firstName.' '.$lastName;?></h2>
+        <p>First Name: <?php echo $firstName;?></p>
+        <p>Last Name: <?php echo $lastName;?></p>
+        <p>Birthdate: *Insert Birthdate*</p>
+      </div>
+      <div class="user-info-right">
+        <p>Email: *Insert Email*</p>
+        <p>Address: *Insert Address*</p>
+        <p>Access Level: *Insert Access*</p>
+      </div>
+    </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d952.2763003772587!2d122.95718617188881!3d10.678791239394512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1709650896132!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="table-container">
 
