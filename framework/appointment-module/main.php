@@ -12,18 +12,21 @@ Pending Appointment
         <th>Date</th>
         <th>Time</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
       </tr>
       </li>
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 $NOW = $NOW->format('Y-m-d');
+$NOW_TIME = $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW_TIME = $NOW_TIME->format('H:i');
 $count = 1;
 if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date >= $NOW && $appointment_status == "Pending"){
+   if($appointment_date >= $NOW && date('H:i', strtotime($appointment_time)) > $NOW_TIME && $appointment_status == "Pending"){
 
   
 ?>
@@ -73,12 +76,14 @@ Missed appointment
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 $NOW = $NOW->format('Y-m-d');
+$NOW_TIME = $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW_TIME = $NOW_TIME->format('H:i');
 $count = 1;
 if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date < $NOW && $appointment_status == "Pending"){
+   if($appointment_date < $NOW && date('H:i', strtotime($appointment_time)) < $NOW_TIME && $appointment_status == "Pending"){
   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>

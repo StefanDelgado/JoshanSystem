@@ -6,6 +6,9 @@ $user->profile_users($user_id);
 $firstName = $user->get_user_firstname($user_id);
 $lastName = $user->get_user_lastname($user_id);
 $email = $user->get_user_email($user_id);
+$access = $user->get_user_access($user_id);
+$gender = $user->get_user_gender($user_id);
+$address = $user->get_user_address($user_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +50,12 @@ $email = $user->get_user_email($user_id);
         <p>First Name: <?php echo $firstName;?></p>
         <p>Last Name: <?php echo $lastName;?></p>
         <p>Birthdate: *Insert Birthdate*</p>
-        <p>Gender: *Insert Gender*</p>
+        <p>Gender: <?php echo $gender;?></p>
       </div>
       <div class="user-info-right">
         <p>Email: <?php echo $email;?></p>
-        <p>Address: *Insert Address*</p>
-        <p>Access Level: *Insert Access*</p>
+        <p>Address: <?php echo $address;?></p>
+        <p>Access Level: <?php echo $access;?></p>
       </div>
     </div>
     <div class="iframe-container">
