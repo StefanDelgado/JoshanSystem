@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 05:41 PM
+-- Generation Time: Mar 06, 2024 at 12:36 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -37,6 +37,17 @@ CREATE TABLE `tbl_appointment` (
   `appointment_status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_appointment`
+--
+
+INSERT INTO `tbl_appointment` (`appointment_id`, `appointment_lastname`, `appointment_firstname`, `appointment_purpose`, `appointment_date`, `appointment_time`, `appointment_status`) VALUES
+(25, 'Test_Lastname', 'Test_Firstname', 'Test_purpose', '2024-03-04', '08:00:00', 'Approve'),
+(26, 'Delgado', 'Stefan Jhonn', 'Test_purpose', '2024-03-04', '08:00:00', 'Approve'),
+(27, 'LN', 'FN', 'Purpose', '2024-03-04', '08:00:00', 'Approve'),
+(28, 'Retard', 'Joshie', 'Himu Ka Front-end', '2024-03-05', '08:00:00', 'Approve'),
+(29, 'Test_Lastname', 'Test_Firstname', 'Test_purpose', '2024-03-04', '08:00:00', 'Approve');
+
 -- --------------------------------------------------------
 
 --
@@ -60,9 +71,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `user_lastname`, `user_firstname`, `user_nickname`, `user_email`, `user_password`, `user_status`, `user_token`, `user_access`) VALUES
-(1, 'lname_test', 'fname_test', 'test_nickname', 'test@email.com', 'password_test', 0, 'token_test', 'Access_test'),
-(2, 'Stefan', 'Gwapo', 'gwapo@email.com', '123', 'Delgado', 1, '', 'Manager'),
-(3, 'gwapo@email.com', '123', 'Delgado', 'Stefan', 'Gwapo', 1, '', 'Staff'),
+(1, 'Admin', 'Admin', 'Admin', 'Admin', 'password_test', 0, 'token_test', 'Admin'),
 (4, 'Delgado', 'Stefan', 'gwapo@email.com', 'Gwapo', '123', 1, '', 'Staff'),
 (5, 'Stefan', 'Gwapo', '123', 'gwapo@email.com', 'Delgado', 1, '', 'Staff'),
 (6, 'Delgado', 'Stefan', 'Gwapo', 'gwapo@email.com', '123', 1, '', 'Staff'),
@@ -94,7 +103,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `appointment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `appointment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

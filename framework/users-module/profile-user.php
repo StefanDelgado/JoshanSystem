@@ -19,6 +19,8 @@ $email = $user->get_user_email($user_id);
     .user-info {
       display: flex;
       justify-content: space-between;
+      align-items:stretch;
+      text-align:center;
     }
     .user-info-left {
       width: 45%;
@@ -26,17 +28,22 @@ $email = $user->get_user_email($user_id);
     .user-info-right {
       width: 45%;
     }
+    .iframe-container{
+      display:flex;
+      justify-content: center;
+      margin-top: 2.5%;
+      margin-bottom:4%;
+    }
   </style>
 </head>
 <body>
   <!-- Main Content Area -->
   <div class="container">
     <div class="header">
-      <h1>User Profile</h1>
+    <h2><?php echo $firstName.' '.$lastName;?></h2>
     </div>
     <div class="user-info">
       <div class="user-info-left">
-        <h2><?php echo $firstName.' '.$lastName;?></h2>
         <p>First Name: <?php echo $firstName;?></p>
         <p>Last Name: <?php echo $lastName;?></p>
         <p>Birthdate: *Insert Birthdate*</p>
@@ -48,7 +55,9 @@ $email = $user->get_user_email($user_id);
         <p>Access Level: *Insert Access*</p>
       </div>
     </div>
+    <div class="iframe-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d952.2763003772587!2d122.95718617188881!3d10.678791239394512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1709650896132!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         <div class="table-container">
 
           <table class="data-table">
