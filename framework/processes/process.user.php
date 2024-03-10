@@ -24,11 +24,21 @@ function create_new_user(){
     $lastname = ucwords($_POST['lastname']);
     $firstname = ucwords($_POST['firstname']);
     $nickname = ucwords($_POST['nickname']);
+    $gender = ucwords($_POST['gender']);
+    $address = ucwords($_POST['address']);
     $access = ucwords($_POST['access']);
     $password = $_POST['password'];
     $confirmpassword = $_POST['confirmpassword'];
     
-    $result = $user->new_user($email,$password,$lastname,$firstname,$nickname,$access);
+     // Check for duplicate user based on first name and last name
+     $result = $user->get_user_by_name($firstname, $lastname);
+     if ($result) {
+         // Handle duplicate user here, e.g., display an error message
+         $error_message = "Error: A user with the same first name and last name already exists.";
+         header('location: ../index.php?page=settings&subpage=users&action=create&id=error&errmsg=' . urlencode($error_message));
+         return;
+     }
+    $result = $user->new_user($email,$password,$lastname,$firstname,$nickname,$gender,$address, $access);
     if($result){
         $id = $user->get_user_id($email);
         header('location: ../index.php?page=settings&subpage=users&action=profile&id='.$id);
@@ -47,7 +57,7 @@ function update_user(){
     
     $result = $user->update_user($lastname,$firstname, $access, $user_id, $email, $nickname);
     if($result){
-        header('location: ../index.php?page=settings&subpage=users&action=&id='.$user_id);
+        header('location: ../index.php?page=settings&subpage=users&action=modify&id='.$user_id);
     }
 }
 
@@ -56,7 +66,7 @@ function delete_user(){
 	$user = new User();
     $result = $user->delete_user($user_id);
     if($result){
-        header('location: ../index.php?page=settings&subpage=users&action=&id='.$user_id);
+        header('location: ../index.php?page=settings&subpage=users&action=modify&id='.$user_id);
     }
 }
 function profile_user(){

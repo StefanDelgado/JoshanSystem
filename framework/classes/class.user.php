@@ -10,16 +10,16 @@ class User{
 		
 	}
 	
-	public function new_user($email,$password,$lastname,$firstname,$nickname, $access){
+	public function new_user($email,$password,$lastname,$firstname,$nickname,$gender,$address, $access){
 		
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 		$NOW = $NOW->format('Y-m-d H:i:s');
 
 		$data = [
-			[$lastname,$firstname,$email,$nickname,$password,'1', $access],
+			[$lastname,$firstname,$email,$nickname,$gender,$address,$password, $access],
 		];
-		$stmt = $this->conn->prepare("INSERT INTO tbl_users (user_lastname, user_firstname, user_email, user_nickname, user_password, user_status, user_access) VALUES (?,?,?,?,?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO tbl_users (user_lastname, user_firstname, user_email, user_nickname, user_gender, user_address, user_password, user_access) VALUES (?,?,?,?,?,?,?,?)");
 		try {
 			$this->conn->beginTransaction();
 			foreach ($data as $row)
@@ -79,6 +79,22 @@ public function delete_user($user_id){
 	return true;
 }
 
+function get_user_by_name($firstname, $lastname) {
+
+    // Query the database to check for a user with the same first name and last name
+    $query = "SELECT * FROM tbl_users WHERE user_firstname = ? AND user_lastname = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$firstname, $lastname]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the result if a duplicate user is found, otherwise return false
+    if (count($result) > 0) {
+        return $result;
+    } else {
+        return false;
+    }
+}
+
 	function get_user_id($email){
 		$sql="SELECT user_id FROM tbl_users WHERE user_email = :email";	
 		$q = $this->conn->prepare($sql);
@@ -121,13 +137,21 @@ public function delete_user($user_id){
 		$user_access = $q->fetchColumn();
 		return $user_access;
 	}
-	function get_user_status($id){
-		$sql="SELECT user_status FROM tbl_users WHERE user_id = :id";	
+	function get_user_gender($id){
+		$sql="SELECT user_gender FROM tbl_users WHERE user_id = :id";	
 		$q = $this->conn->prepare($sql);
 		$q->execute(['id' => $id]);
-		$user_status = $q->fetchColumn();
-		return $user_status;
+		$user_gender = $q->fetchColumn();
+		return $user_gender;
 	}
+	function get_user_address($id){
+		$sql="SELECT user_address FROM tbl_users WHERE user_id = :id";	
+		$q = $this->conn->prepare($sql);
+		$q->execute(['id' => $id]);
+		$user_address = $q->fetchColumn();
+		return $user_address;
+	}
+	
 	function get_session(){
 		if(isset($_SESSION['login']) && $_SESSION['login'] == true){
 			return true;
