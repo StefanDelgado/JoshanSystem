@@ -15,8 +15,9 @@
                     require_once 'module-folder/';
                 break; 
                 default:
-                    require_once 'main.php';
+                    require_once 'color.php';
                 break; 
             }
     ?>
   </div>
+  
