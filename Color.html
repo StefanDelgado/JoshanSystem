@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Website</title>
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Left Side Panel -->
+    <div class="sidebar" id="sidebar">
+      <div class="logo">
+        <img src="https://i.pinimg.com/736x/2b/81/a8/2b81a830e7be62b2437a493d2867c3d8.jpg" alt="Logo">
+        <span class="admin-name">Welcome, Admin</span>
+      </div>
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Appointment</a></li>
+        <li><a href="#">Event</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+      <div class="footer">
+        <p>&copy; HUMBLEZ FOR LYFE</p>
+      </div>
+      <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <div class="container">
+        <div class="header">
+          <h1>User Settings</h1>
+        </div>
+        <div class="content-container">
+          <div class="content">
+            <!-- Your content here -->
+            <p class="centerize-text big-text">Choose a gradient you wished to use!</p>
+            <!-- Dark Mode Toggle Button -->
+            <button class="dark-mode-toggle-btn" onclick="toggleDarkMode()">
+              <i class="fas fa-moon"></i> <!-- Icon markup for moon icon -->
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/admin.js"></script>
+  <script src="js/dark-mode.js"></script>
+</body>
+</html>
