@@ -18,16 +18,16 @@ Pending Appointment
       </li>
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
-$NOW = $NOW->format('Y-m-d');
-$NOW_TIME = $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
-$NOW_TIME = $NOW_TIME->format('H:i');
+$NOW_TIME = new DateTime('now', new DateTimeZone('Asia/Manila'));
 $count = 1;
-if($appointment->list_appointments() != false){
-  
-foreach($appointment->list_appointments() as $value){
-   extract($value);
-   if($appointment_date >= $NOW && date('H:i', strtotime($appointment_time)) > $NOW_TIME && $appointment_status == "Pending"){
+if ($appointment->list_appointments() != false) {
+  foreach ($appointment->list_appointments() as $value) {
+    extract($value);
+    $appointment_date_formatted = DateTime::createFromFormat('Y-m-d', $appointment_date);
+    $appointment_time_formatted = DateTime::createFromFormat('g:i A', $appointment_time);
 
+    if ($appointment_date_formatted >= $NOW && $appointment_status == "Pending" ) {
+      
   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
@@ -51,6 +51,7 @@ foreach($appointment->list_appointments() as $value){
       <tr>
 <?php
  $count++;
+   } else {
    }
 }
 }else{
@@ -83,7 +84,7 @@ if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if($appointment_date < $NOW && date('H:i', strtotime($appointment_time)) < $NOW_TIME && $appointment_status == "Pending"){
+   if($appointment_date < $NOW && date('H:i', strtotime($appointment_time)) < $NOW_TIME && $appointment_status == "Missed"){
   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
@@ -104,6 +105,8 @@ foreach($appointment->list_appointments() as $value){
 }else{
   echo "No Record Found.";
 }
+
 ?>
     </table>
+    
 </div>
