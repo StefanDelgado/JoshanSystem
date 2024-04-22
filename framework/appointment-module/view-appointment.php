@@ -7,10 +7,10 @@
         <button type="submit" name="submit" value="Approve">Approve</button>
         <button type="submit" name="submit" value="Pending">Pending</button>
         <button type="submit" name="submit" value="Missed">Missed</button>
-        <button type="submit" name="submit" value="clear">Clear</button>
+        <button type="submit" name="submit" value="clear">All</button>
         
     </form>
-    <?php print_r($_POST)?>
+    <?php //print_r($_POST)?>
 <!-- The Modal 
 <div id="myModal" class="modal">
    Modal content 
@@ -35,7 +35,7 @@
 
 <?php 
 $status = isset($_POST['status']) ? $_POST['status'] : ''; // Retrieve the button value
-print_r($status);
+
 ?>
     <table class="data-table">
       <tr>

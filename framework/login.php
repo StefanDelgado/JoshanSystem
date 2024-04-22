@@ -36,11 +36,11 @@ if(isset($_REQUEST['submit'])){
      <form method="POST" action="" name="login">
         <h1>Login</h1>
         <div class="input-box">
-            <input type="text" placeholder="Username" required>
+            <input type="email" class="input" name="useremail" placeholder="Email" required>
             <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" class="input" name="password"  placeholder="Password" required>
             <i class='bx bxs-lock-alt'></i>
         </div>
 
@@ -48,7 +48,7 @@ if(isset($_REQUEST['submit'])){
             <label> <input type="checkbox"> Remember me</label>
             <a href="#">Forgot password?</a>
         </div>
-        <button type="submit" class="btn">Log in</button>
+        <button type="submit" name="submit" value="Submit" class="btn">Log in</button>
         <div class="register-link">
             <p>Don't have an account? <a href="#">Register</a></p>
         </div>

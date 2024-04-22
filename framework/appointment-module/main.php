@@ -18,15 +18,16 @@ Pending Appointment
       </li>
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW = $NOW->format('Y-m-d');
 $NOW_TIME = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW_TIME = $NOW_TIME->format('H:i');
 $count = 1;
 if ($appointment->list_appointments() != false) {
+  
   foreach ($appointment->list_appointments() as $value) {
     extract($value);
-    $appointment_date_formatted = DateTime::createFromFormat('Y-m-d', $appointment_date);
-    $appointment_time_formatted = DateTime::createFromFormat('g:i A', $appointment_time);
 
-    if ($appointment_date_formatted >= $NOW && $appointment_status == "Pending" ) {
+    if($appointment_date >= $NOW  && $appointment_status == "Pending"){
       
   
 ?>
@@ -77,22 +78,25 @@ Missed appointment
 <?php
 $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 $NOW = $NOW->format('Y-m-d');
-$NOW_TIME = $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW_TIME = new DateTime('now', new DateTimeZone('Asia/Manila'));
 $NOW_TIME = $NOW_TIME->format('H:i');
 $count = 1;
 if($appointment->list_appointments() != false){
-  
+
 foreach($appointment->list_appointments() as $value){
    extract($value);
-   if ($NOW > $appointment_time && $appointment_status == "Pending") {
-    // Update the appointment status to "Missing"
-    $appointment->update_appointment_status($appointment_id, "Missed");
-  }
-   if($appointment_date < $NOW && date('H:i', strtotime($appointment_time)) < $NOW_TIME && $appointment_status == "Missed"){
-    
-    
-    
+   $appointment_time = date('H:i', strtotime($appointment_time));
+
    
+   $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
+$NOW_TIME = $NOW->format('H:i');
+if ($NOW_TIME > $appointment_time && $appointment_status == "Pending") {
+    // Update the appointment status to "Missed"
+    $appointment->update_appointment_status($appointment_id, "Missed");
+    
+}
+   if($appointment_date < $NOW  && $appointment_status == "Missed"){
+    
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
         <td><?php echo $count;?></td>
@@ -108,6 +112,8 @@ foreach($appointment->list_appointments() as $value){
 <?php
  $count++;
    
+   } else {
+    //echo'ERROR ';
    }
 }
 }else{
