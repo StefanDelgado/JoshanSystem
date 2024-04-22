@@ -65,7 +65,7 @@ public function update_appointment_status($appointment_id,$status){
 
 
 	public function list_appointments(){
-		$sql="SELECT * FROM tbl_appointment";
+		$sql="SELECT * FROM tbl_appointment"; // Loads all table data
 		$q = $this->conn->query($sql) or die("failed!");
 		while($r = $q->fetch(PDO::FETCH_ASSOC)){
 		$data[]=$r;

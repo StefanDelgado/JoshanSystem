@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Website</title>
-  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/dark.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -31,19 +31,23 @@
     <div class="main-content">
       <div class="container">
         <div class="header">
-          <h1>Welcome to the Admin Panel</h1>
-          <p>This is where your content goes. You can add different sections, tables, forms, etc.</p>
+          <h1>User Settings</h1>
         </div>
         <div class="content-container">
           <div class="content">
             <!-- Your content here -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod nisl ac sem feugiat, sit amet dignissim nunc fringilla.</p>
-            <button class="btn">Click Me</button>
+            <p class="centerize-text big-text">Choose a gradient you wished to use!</p>
+            <!-- Dark Mode Toggle Button -->
+            <button class="dark-mode-toggle-btn" onclick="toggleDarkMode()">
+              <i class="fas fa-moon"></i> <!-- Icon markup for moon icon -->
+            </button>
+            <p>---More Icon coming soon---</p>
           </div>
         </div>
       </div>
     </div>
   </div>
   <script src="js/admin.js"></script>
+  <script src="js/dark-mode.js"></script>
 </body>
 </html>

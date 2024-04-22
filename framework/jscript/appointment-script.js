@@ -1,3 +1,4 @@
+
 function confirmChanges() {
     var confirmation = confirm("Are you sure you want to save these changes? ");
   
@@ -47,4 +48,4 @@ document.getElementById('search-form').addEventListener('submit', function(event
 
   // Call the search_appointment function with the form data
   search_appointment(table, sort, search);
-});
+}); 
