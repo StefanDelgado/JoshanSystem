@@ -76,7 +76,19 @@ public function update_appointment_status($appointment_id,$status){
 			return $data;	
 		}
 }
-public function search_appointment($table, $sort, $search) {
+public function list_approve_appointments(){
+	$sql = "SELECT * FROM tbl_appointment WHERE appointment_status = 'Approve'"; // Loads approve table data
+	$q = $this->conn->query($sql) or die("failed!");
+	while($r = $q->fetch(PDO::FETCH_ASSOC)){
+	$data[]=$r;
+	}
+	if(empty($data)){
+	   return false;
+	}else{
+		return $data;	
+	}
+}
+/*public function search_appointment($table, $sort, $search) {
 	// Connect to the database
 	$db = new PDO('mysql:host=localhost;dbname=mydatabase', 'username', 'password');
   
@@ -121,6 +133,7 @@ public function search_appointment($table, $sort, $search) {
 	// Return the filtered appointments
 	return $filteredAppointments;
   }
+*/
 
 public function delete_appointment($appointment_id){
 	$sql = "DELETE FROM tbl_appointment WHERE appointment_id = :appointment_id";

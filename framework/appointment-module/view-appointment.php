@@ -1,10 +1,19 @@
 <div id="subcontent">
     <div>
-    <button id="myBtn">Search</button>
-
-<!-- The Modal -->
+    <!--<button id="myBtn">Search</button>-->
+    <form id="search-form" method="POST" action="">
+        <input type="hidden" id="status-input" name="status">
+        Status:
+        <button type="submit" name="submit" value="Approve">Approve</button>
+        <button type="submit" name="submit" value="Pending">Pending</button>
+        <button type="submit" name="submit" value="Missed">Missed</button>
+        <button type="submit" name="submit" value="clear">Clear</button>
+        
+    </form>
+    <?php print_r($_POST)?>
+<!-- The Modal 
 <div id="myModal" class="modal">
-  <!-- Modal content -->
+   Modal content 
   <div class="modal-content">
     <span class="close">&times;</span>
     <form id="search-form" method="POST" action="processes/process.appointment.php?action=search">
@@ -22,9 +31,12 @@
       <input type="submit" value="Submit">
     </form>
   </div>
-</div>
+</div> -->
 
-
+<?php 
+$status = isset($_POST['status']) ? $_POST['status'] : ''; // Retrieve the button value
+print_r($status);
+?>
     <table class="data-table">
       <tr>
         <th>#</th>
@@ -38,27 +50,47 @@
 <?php
 
 $count = 1;
+
+
 if($appointment->list_appointments() != false){
-foreach($appointment->list_appointments() as $value){
-   extract($value);
-  
-?>
-      <tr id=<?php echo $appointment_lastname;?>>
-        <td><?php echo $count;?></td>
-        <td><?php echo $appointment_lastname;?></td>
-        <td><?php echo $appointment_firstname;?></td>
-        <td><?php echo $appointment_purpose;?></td>
-        <td><?php echo $appointment_date;?></td>
-        <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
-        <td><?php echo $appointment_status; ?></td>
-      </tr>
-      <tr>
-<?php
- $count++;
-}
-}else{
+  foreach($appointment->list_appointments() as $value){
+      extract($value);
+      if (isset($_POST['submit']) && $_POST['submit'] == $appointment_status) {
+          // Display the record where the status is equal to the submitted button value
+          ?>
+          <tr id=<?php echo $appointment_lastname;?>>
+              <td><?php echo $count;?></td>
+              <td><?php echo $appointment_lastname;?></td>
+              <td><?php echo $appointment_firstname;?></td>
+              <td><?php echo $appointment_purpose;?></td>
+              <td><?php echo $appointment_date;?></td>
+              <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
+              <td><?php echo $appointment_status; ?></td>
+          </tr>
+          <?php
+          $count++;
+      } if (isset($_POST['submit']) && $_POST['submit'] == 'clear'){
+          // Display the record where the status is not equal to the submitted button value
+          ?>
+          <tr id=<?php echo $appointment_lastname;?>>
+              <td><?php echo $count;?></td>
+              <td><?php echo $appointment_lastname;?></td>
+              <td><?php echo $appointment_firstname;?></td>
+              <td><?php echo $appointment_purpose;?></td>
+              <td><?php echo $appointment_date;?></td>
+              <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
+              <td><?php echo $appointment_status; ?></td>
+          </tr>
+          <?php
+          $count++;
+      }
+  }
+} else {
   echo "No Record Found.";
 }
+
 ?>
+  
+
     </table>
 </div>

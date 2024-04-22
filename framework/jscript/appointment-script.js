@@ -21,14 +21,14 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+/*btn.onclick = function() {
   modal.style.display = "block";
-}
+}*/
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+/*span.onclick = function() {
   modal.style.display = "none";
-}
+}*/
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -38,14 +38,11 @@ window.onclick = function(event) {
 }
 });
 
-document.getElementById('search-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
 
-  // Get the form data
-  var table = document.getElementById('table-select').value;
-  var sort = document.getElementById('sort-select').value;
-  var search = document.getElementById('search-input').value;
-
-  // Call the search_appointment function with the form data
-  search_appointment(table, sort, search);
-}); 
+  // Status buttons
+ // JavaScript to submit the form when a button is clicked
+ document.querySelectorAll('button[type="submit"]').forEach(button => {
+  button.addEventListener('click', () => {
+      document.getElementById('status-input').value = button.value;
+  });
+});

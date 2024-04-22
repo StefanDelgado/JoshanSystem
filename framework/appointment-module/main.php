@@ -84,8 +84,15 @@ if($appointment->list_appointments() != false){
   
 foreach($appointment->list_appointments() as $value){
    extract($value);
+   if ($NOW > $appointment_time && $appointment_status == "Pending") {
+    // Update the appointment status to "Missing"
+    $appointment->update_appointment_status($appointment_id, "Missed");
+  }
    if($appointment_date < $NOW && date('H:i', strtotime($appointment_time)) < $NOW_TIME && $appointment_status == "Missed"){
-  
+    
+    
+    
+   
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
         <td><?php echo $count;?></td>
@@ -100,6 +107,7 @@ foreach($appointment->list_appointments() as $value){
       <tr>
 <?php
  $count++;
+   
    }
 }
 }else{

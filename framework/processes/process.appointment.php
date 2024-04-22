@@ -16,8 +16,8 @@ switch($action){
     case 'update_status':
         update_appointment_status();
     break;
-    case 'search':
-        search_appointment();
+    case 'search-status':
+        search_appointment_status();
 }
 
 function create_new_appointment(){
@@ -73,12 +73,27 @@ function update_appointment_status(){
     }
 }
 
-function search_appointment(){
-    $table = $_POST['table'];
-    $sort = $_POST['sort'];
-    $search = $_POST['search'];
+function search_appointment_status(){
+    $appointment = new appointment();
 
-    $result = $appointment->search_appointment($table, $sort, $search);
+    // Get the button value from the POST data
+    $button_value = $_POST['value'];
+
+    // Call the appropriate function based on the button value
+    switch($button_value){
+        case 'approve':
+            $result = $appointment->search_approve_appointments();
+            break;
+        case 'pending':
+            $result = $appointment->search_pending_appointments();
+            break;
+        case 'missed':
+            $result = $appointment->search_missed_appointments();
+            break;
+        default:
+            $result = $appointment->list_appointments();
+            break;
+    }
     if($result){
         header('location: ../index.php?page=appointment&subpage=appointment&action=view');
     }
