@@ -28,28 +28,31 @@ if(isset($_REQUEST['submit'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom.css?<?php echo time();?>">
+    <link rel="stylesheet" href="css/login.css?<?php echo time();?>">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
 </head>
-<body style="background-image: url(https://t3.ftcdn.net/jpg/05/79/48/50/360_F_579485091_aVxVKR8e2s886hee1j146OBeiJugJifG.jpg);">
-<div class="container">
-    <div class="brand-block">
-        <h2>HUMBLEZ</h2>
-    </div>
-    <div class="login-block">
-        <h3>Please login</h3>
-        <form method="POST" action="" name="login">
-            <div class="form-group">
-                <input type="email" class="input" required name="useremail" placeholder="Valid E-mail"/>
-            </div>
-            <div class="form-group">
-                <input type="password" class="input" required name="password" placeholder="Password"/>
-            </div>
-            <div class="form-group">
-                <input type="submit" name="submit" value="Submit" class="btn"/>
-            </div>
-        </form>
-        <div id='error_notif' class="error-message">Wrong email or password.</div>
-    </div>
+<body>
+<div class="wrapper">
+     <form method="POST" action="" name="login">
+        <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" placeholder="Username" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <div class="remember-forgot">
+            <label> <input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn">Log in</button>
+        <div class="register-link">
+            <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
+    </form>
 </div>
 </body>
 </html>
