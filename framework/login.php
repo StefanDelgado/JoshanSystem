@@ -33,7 +33,7 @@ if(isset($_REQUEST['submit'])){
 </head>
 <body>
 <div class="wrapper">
-    <form action="">
+     <form method="POST" action="" name="login">
         <h1>Login</h1>
         <div class="input-box">
             <input type="text" placeholder="Username" required>
