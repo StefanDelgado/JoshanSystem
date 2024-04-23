@@ -1,7 +1,8 @@
 html {
   margin: 0;
   font-family: 'Assistant', sans-serif;
-  background: linear-gradient(to bottom right, #1c64f2, #3f86ff);
+  background: transparent;
+  backdrop-filter: blur(20px);
   color: #333;
 }
 body {

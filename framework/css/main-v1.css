@@ -8,10 +8,10 @@ body {
 }
 
 .sidebar {
-  background: linear-gradient(to bottom, teal, cyan);
+  background: #01796f;
   color: #fff;
   width: 250px;
-  height: 100vh;
+  height: 130vh;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -106,7 +106,7 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: #97ACA5;
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }

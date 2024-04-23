@@ -1,3 +1,57 @@
+<style>
+    .input {
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        padding: 1em;
+        background-color: #ccc;
+        box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+        transition: 300ms ease-in-out;
+    }
+
+    .input:focus {
+        background-color: white;
+        transform: scale(1.05);
+        box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+    }
+
+    #form-block {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    #form-block-half {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #button-block {
+        text-align: center;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    label {
+        margin-top: 10px;
+        display: block;
+    }
+</style>
 <?php if (isset($_GET['errmsg'])) { echo "<p style='color: red'>" . htmlspecialchars($_GET['errmsg']) . "</p>"; } ?>
 <h3>Provide the Required Information</h3>
 <div id="form-block">
@@ -16,7 +70,7 @@
             <select id="gender" name="gender">
               <option value="Male">Male</option>
               <option value="Female">Female</option>
-              <option value="other">other</option>
+              <option value="Other">Other</option>
             </select>
 
             <label for="access">Access Level</label>
@@ -34,17 +88,20 @@
             <input type="text" id="address" class="input" name="address" placeholder="Your address.." required>
 
             <label for="map">Map:</label>
-            <button><a href="https://www.google.com/maps" target_blank></a>Maps</button> <br>
+            <a href="https://www.google.com/maps" target="_blank"><button type="button">Maps</button></a>
+            <br>
 
             <label for="password">Password</label>
             <input type="password" id="password" class="input" name="password" placeholder="Enter password.." required>
 
             <label for="confirmpassword">Confirm Password</label>
             <input type="password" id="confirmpassword" class="input" name="confirmpassword" placeholder="Confirm password.." required>
-            
+
+            <label for="username">Username</label>
+            <input type="text" autocomplete="off" name="username" class="input" placeholder="Username">
         </div>
         <div id="button-block">
-        <input type="submit" value="Save">
+            <input type="submit" value="Save">
         </div>
-  </form>
+    </form>
 </div>
