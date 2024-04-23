@@ -56,6 +56,7 @@ $user_access = $user->get_user_access($user_id);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/custom.css?<?php echo time();?>">
     <link rel="stylesheet" href="css/appointment-css.css?<?php echo time();?>">
     <link rel="stylesheet" href="css/main-v1.css?<?php echo time();?>">
