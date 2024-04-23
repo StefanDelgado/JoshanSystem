@@ -92,7 +92,7 @@ $user_access = $user->get_user_access($user_id);
       <ul class="navigation">
         <li><a href="index.php" class="<?php echo ($page === '' || $page === 'home') ? 'active' : ''; ?>">Home</a></li>
         <li><a href="index.php?page=appointment" class="<?php echo ($page === 'appointment') ? 'active' : ''; ?>">Appointment</a></li>
-        <li><a href="index.php?page=event" class="<?php echo ($page === 'event') ? 'active' : ''; ?>">Event</a></li>
+        <!--<li><a href="index.php?page=event" class="<?php //echo ($page === 'event') ? 'active' : ''; ?>">Event</a></li> -->
         <li><a href="index.php?page=settings" class="<?php echo ($page === 'settings') ? 'active' : ''; ?>">Settings</a></li>
         <li><a href="logout.php">Logout</a></li>
       </ul>

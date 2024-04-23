@@ -14,6 +14,7 @@
 </form>
 
 <?php
+error_reporting(0);
 $status = $_POST['status'];
 ?>
 
@@ -82,7 +83,9 @@ if($appointment->get_record_status($status) != false){
           $count++;
       } 
 } else {
+  if($status != "all"){
   echo "No Record Found.";
+  }
   foreach ($appointment->list_appointments() as $value) {
     extract($value);
       
