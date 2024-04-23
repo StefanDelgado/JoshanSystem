@@ -39,10 +39,3 @@ window.onclick = function(event) {
 });
 
 
-  // Status buttons
- // JavaScript to submit the form when a button is clicked
- document.querySelectorAll('button[type="submit"]').forEach(button => {
-  button.addEventListener('click', () => {
-      document.getElementById('status-input').value = button.value;
-  });
-});

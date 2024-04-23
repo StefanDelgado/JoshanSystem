@@ -88,52 +88,6 @@ public function list_approve_appointments(){
 		return $data;	
 	}
 }
-/*public function search_appointment($table, $sort, $search) {
-	// Connect to the database
-	$db = new PDO('mysql:host=localhost;dbname=mydatabase', 'username', 'password');
-  
-	// Prepare the SQL query
-	$query = "SELECT * FROM appointments";
-  
-	// Add the WHERE clause to filter the appointments by table
-	if ($table !== '*') {
-	  $query .= " WHERE table = :table";
-	}
-  
-	// Add the ORDER BY clause to sort the appointments
-	if ($sort === 'Ascending') {
-	  $query .= " ORDER BY date, time ASC";
-	} else {
-	  $query .= " ORDER BY date, time DESC";
-	}
-  
-	// Add the LIKE clause to search for appointments
-	if ($search !== '') {
-	  $query .= " AND (last_name LIKE :search OR first_name LIKE :search OR purpose LIKE :search OR date LIKE :search OR time LIKE :search OR status LIKE :search)";
-	}
-  
-	// Prepare the statement
-	$stmt = $db->prepare($query);
-  
-	// Bind the parameters
-	if ($table !== '*') {
-	  $stmt->bindValue(':table', $table);
-	}
-	if ($search !== '') {
-	  $searchTerm = '%' . $search . '%';
-	  $stmt->bindValue(':search', $searchTerm);
-	}
-  
-	// Execute the statement
-	$stmt->execute();
-  
-	// Fetch the filtered appointments
-	$filteredAppointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  
-	// Return the filtered appointments
-	return $filteredAppointments;
-  }
-*/
 
 public function delete_appointment($appointment_id){
 	$sql = "DELETE FROM tbl_appointment WHERE appointment_id = :appointment_id";
@@ -189,6 +143,25 @@ public function delete_appointment($appointment_id){
 			return $appointment_status;
 		}
 		
+	}
+	function get_record_status($status){
+		$sql="SELECT * FROM tbl_appointment WHERE appointment_status = '$status'"; // Loads specific table data
+		$q = $this->conn->query($sql) or die("failed!");
+		while($r = $q->fetch(PDO::FETCH_ASSOC)){
+		$data[]=$r;
+		}
+		if(empty($data)){
+		   return false;
+		}else{
+			return $data;	
+		}
+	}
+
+	function delete_appointment_record($status) {
+		$sql = "DELETE FROM tbl_appointment WHERE appointment_status = :status;";
+		$q = $this->conn->prepare($sql);
+		$q->execute(array(':status'=>$status));
+		return true;
 	}
 	
 	

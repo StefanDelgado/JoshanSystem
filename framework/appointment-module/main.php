@@ -1,5 +1,6 @@
 <div class="responsive-table">
 <div id="subcontent">
+  <br>
 Pending Appointment
 <br>
 <ul class="responsive-table">
@@ -87,10 +88,7 @@ foreach($appointment->list_appointments() as $value){
    extract($value);
    $appointment_time = date('H:i', strtotime($appointment_time));
 
-   
-   $NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
-$NOW_TIME = $NOW->format('H:i');
-if ($NOW_TIME > $appointment_time && $appointment_status == "Pending") {
+if ($NOW > $appointment_date && $appointment_status == "Pending") {
     // Update the appointment status to "Missed"
     $appointment->update_appointment_status($appointment_id, "Missed");
     

@@ -39,9 +39,16 @@ function openForm(appointmentId, appointmentLastName, appointmentFirstName, appo
 }
 
 
-function closeForm() {
-  // Close form
-  document.getElementById("popup").style.display = "none";
+function closeForm_appointment() {
+  // Get the form element
+  const form = document.getElementById("popup");
+
+  // Check if the form exists before trying to hide it
+  if (form) {
+    form.style.display = "none";
+  } else {
+    console.error("Form element not found");
+  }
 }
 
 document.querySelector('form.form-container').addEventListener('submit', function(event) {

@@ -15,7 +15,7 @@ $count = 1;
 if($appointment->list_appointments() != false){
 foreach($appointment->list_appointments() as $value){
    extract($value);
-  
+   if( $appointment_status == "Pending"){
 ?>
       <tr>
         <td><?php echo $count;?></td>
@@ -29,6 +29,7 @@ foreach($appointment->list_appointments() as $value){
       <tr>
 <?php
  $count++;
+   }
 }
 }else{
   echo "No Record Found.";
@@ -66,7 +67,7 @@ foreach($appointment->list_appointments() as $value){
     </div>
     <div id="button-block">
       <button type="button" class="btn" id="submit-button" onclick="confirmChanges()">Save</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      <button type="button" class="btn cancel" onclick="closeForm_appointment()">Close</button>
     </div>
   </form>
 </div>

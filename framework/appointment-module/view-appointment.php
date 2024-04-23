@@ -1,16 +1,28 @@
 <div id="subcontent">
     <div>
     <!--<button id="myBtn">Search</button>-->
+    <?php// $_POST['submit'] = 'clear'?>
     <form id="search-form" method="POST" action="">
-        <input type="hidden" id="status-input" name="status">
-        Status:
-        <button type="submit" name="submit" value="Approve">Approve</button>
-        <button type="submit" name="submit" value="Pending">Pending</button>
-        <button type="submit" name="submit" value="Missed">Missed</button>
-        <button type="submit" name="submit" value="clear">All</button>
-        
-    </form>
-    <?php //print_r($_POST)?>
+    <label for="status-select">Status:</label>
+    <select id="status-select" name="status" onchange="this.form.submit()">
+        <option value="all">-- Select --</option>
+        <option value="all">All</option>
+        <option value="Approve">Approve</option>
+        <option value="Pending">Pending</option>
+        <option value="Missed">Missed</option>
+    </select>
+</form>
+
+<?php
+$status = $_POST['status'];
+?>
+
+<form id="delete-form" method="POST" action="processes/process.appointment.php?action=delete-status-all">
+    <input type="hidden" id="record_delete" name="record_delete" value="<?php echo htmlspecialchars($status);?>">
+    Action:
+    <input type="submit" value="Delete">
+</form>
+    
 <!-- The Modal 
 <div id="myModal" class="modal">
    Modal content 
@@ -34,7 +46,6 @@
 </div> -->
 
 <?php 
-$status = isset($_POST['status']) ? $_POST['status'] : ''; // Retrieve the button value
 
 ?>
     <table class="data-table">
@@ -52,10 +63,10 @@ $status = isset($_POST['status']) ? $_POST['status'] : ''; // Retrieve the butto
 $count = 1;
 
 
-if($appointment->list_appointments() != false){
-  foreach($appointment->list_appointments() as $value){
+if($appointment->get_record_status($status) != false){
+  foreach($appointment->get_record_status($status) as $value){
       extract($value);
-      if (isset($_POST['submit']) && $_POST['submit'] == $appointment_status) {
+
           // Display the record where the status is equal to the submitted button value
           ?>
           <tr id=<?php echo $appointment_lastname;?>>
@@ -69,27 +80,31 @@ if($appointment->list_appointments() != false){
           </tr>
           <?php
           $count++;
-      } if (isset($_POST['submit']) && $_POST['submit'] == 'clear'){
-          // Display the record where the status is not equal to the submitted button value
-          ?>
-          <tr id=<?php echo $appointment_lastname;?>>
-              <td><?php echo $count;?></td>
-              <td><?php echo $appointment_lastname;?></td>
-              <td><?php echo $appointment_firstname;?></td>
-              <td><?php echo $appointment_purpose;?></td>
-              <td><?php echo $appointment_date;?></td>
-              <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
-              <td><?php echo $appointment_status; ?></td>
-          </tr>
-          <?php
-          $count++;
-      }
-  }
+      } 
 } else {
   echo "No Record Found.";
-}
-
+  foreach ($appointment->list_appointments() as $value) {
+    extract($value);
+      
+  
 ?>
+      <tr id=<?php echo $appointment_lastname;?>>
+        <td><?php echo $count;?></td>
+        <td><?php echo $appointment_lastname;?></td>
+        <td><?php echo $appointment_firstname;?></td>
+        <td><?php echo $appointment_purpose;?></td>
+        <td><?php echo $appointment_date;?></td>
+        <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
+        <td><?php echo $appointment_status; ?></td>
+        </tr>
+      <tr>
+<?php
+ $count++;
+   }
+}
+?>
+
+
   
 
     </table>

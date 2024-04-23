@@ -18,6 +18,10 @@ switch($action){
     break;
     case 'search-status':
         search_appointment_status();
+    break;
+    case 'delete-status-all':
+        delete_appointment_all();
+    break;
 }
 
 function create_new_appointment(){
@@ -72,28 +76,22 @@ function update_appointment_status(){
         header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$appointment_id);
     }
 }
+function delete_appointment_all(){
+    $status = $_POST['record_delete'];
+    print_r("Status: $status");
+    $appointments=new appointment();
+    $results=$appointments->delete_appointment_record($status);
+    if($results){
+        header('location: ../index.php?page=appointment&subpage=appointment&action=view');
+    }
+
+}
 
 function search_appointment_status(){
     $appointment = new appointment();
-
-    // Get the button value from the POST data
-    $button_value = $_POST['value'];
-
-    // Call the appropriate function based on the button value
-    switch($button_value){
-        case 'approve':
-            $result = $appointment->search_approve_appointments();
-            break;
-        case 'pending':
-            $result = $appointment->search_pending_appointments();
-            break;
-        case 'missed':
-            $result = $appointment->search_missed_appointments();
-            break;
-        default:
-            $result = $appointment->list_appointments();
-            break;
-    }
+    $status = $_POST['status'];
+    print_r("Status: $status");
+    $result = $appointment->get_record_status($status);
     if($result){
         header('location: ../index.php?page=appointment&subpage=appointment&action=view');
     }
