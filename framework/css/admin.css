@@ -8,7 +8,7 @@ body {
 }
 
 .sidebar {
-  background: linear-gradient(to bottom, teal, cyan);
+  background: #d5bdc3;
   color: #fff;
   width: 250px;
   height: 100vh;
