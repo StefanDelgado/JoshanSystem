@@ -4,10 +4,9 @@
         <th>#</th>
         <th>Name</th>
         <th>Gender</th>
-        <th>Access Level</th>
         <th>Email</th>
         <th>Address</th>
-        <th>Nickname</th>
+        <th>Access Level</th>
         
       </tr>
 <?php
@@ -22,10 +21,9 @@ foreach($user->list_users() as $value){
         <td><?php echo $count;?></td>
         <td><a href="index.php?page=settings&subpage=users&action=profile&id=<?php echo $user_id;?>"><?php echo $user_lastname.', '.$user_firstname;?></a></td>
         <td><?php echo $user_gender;?></td>
-        <td><?php echo $user_access;?></td>
         <td><?php echo $user_email;?></td>
         <td><?php echo $user_address;?></td>
-        <td><?php echo $user_nickname;?></td>
+        <td><?php echo $user_access;?></td>
       </tr>
       <tr>
 <?php

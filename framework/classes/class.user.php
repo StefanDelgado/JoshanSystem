@@ -36,16 +36,16 @@ class User{
 
 	}
 
-	public function update_user($lastname,$firstname, $access, $id, $email, $nickname){
+	public function update_user($lastname,$firstname, $access, $id, $email, $address, $gender){
 		
 		/* Setting Timezone for DB */
 		$NOW = new DateTime('now', new DateTimeZone('Asia/Manila'));
 		$NOW = $NOW->format('Y-m-d H:i:s');
 
-		$sql = "UPDATE tbl_users SET user_lastname=:user_lastname, user_firstname=:user_firstname, user_access=:user_access, user_email=:user_email, user_nickname=:user_nickname WHERE user_id=:user_id";
+		$sql = "UPDATE tbl_users SET user_lastname=:user_lastname, user_firstname=:user_firstname, user_access=:user_access, user_email=:user_email, user_nickname=:user_nickname, user_address=:user_address, user_gender=:user_gender WHERE user_id=:user_id";
 
 		$q = $this->conn->prepare($sql);
-		$q->execute(array(':user_lastname'=>$lastname,':user_firstname'=>$firstname,':user_access'=>$access,':user_email'=>$email, ':user_nickname'=>$nickname,':user_id'=>$id));
+		$q->execute(array(':user_lastname'=>$lastname,':user_firstname'=>$firstname,':user_access'=>$access,':user_email'=>$email, ':user_nickname'=>$nickname,  ':user_address'=>$address, ':user_gender'=>$gender,':user_id'=>$id));
 		return true;
 	}
 

@@ -1,4 +1,4 @@
-function openFormUser(userId, userLastName, userFirstName, userAccess, userEmail, userNickname) {
+function openFormUser(userId, userLastName, userFirstName, userAccess, userEmail, /*userNickname*/) {
   document.getElementById("popup-user").style.display = "block";
 
   // Set the value of the hidden input field in the edit forms
@@ -8,7 +8,9 @@ function openFormUser(userId, userLastName, userFirstName, userAccess, userEmail
   document.getElementById("fname").value = userFirstName; // Set the value of the name input field
   document.getElementById("Access").value = userAccess; // Set the value of the name input field
   document.getElementById("email").value = userEmail; // Set the value of the name input field
-  document.getElementById("nickname").value = userNickname; // Set the value of the name input field
+  document.getElementById("address").value = userAddress;
+  document.getElementById("gender").value = userGender;
+  //document.getElementById("nickname").value = userNickname; // Set the value of the name input field
   
 
    
@@ -41,7 +43,9 @@ document.querySelector('form.form-container').addEventListener('submit', functio
   var firstName = document.getElementById("fname").value;
   var access = document.getElementById("Access").value;
   var email = document.getElementById("email").value;
-  var nickanme = document.getElementById("nickname").value;
+  var address = document.getElementById("address").value;
+  var gender = document.getElementById("gender").value;
+  //var nickanme = document.getElementById("nickname").value;
 
   // Send an AJAX request to update the user
   var xhr = new XMLHttpRequest();
@@ -55,7 +59,7 @@ document.querySelector('form.form-container').addEventListener('submit', functio
       console.log('Error: ' + xhr.statusText);
     }
   };
-  xhr.send('user_id=' + userId + '&lname=' + lastName + '&fname=' + firstName + '&access=' + access + '&email=' + email + '&nickname=' + nickname);
+  xhr.send('user_id=' + userId + '&lname=' + lastName + '&fname=' + firstName + '&access=' + access + '&email=' + email + '&address=' + address + '&gender=' + gender);
 });
 
 function deleteUser(userId) {

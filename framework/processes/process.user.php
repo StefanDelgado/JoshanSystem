@@ -51,11 +51,13 @@ function update_user(){
     $lastname = ucwords($_POST['lname']);
     $firstname = ucwords($_POST['fname']);
     $access = ucwords($_POST['Access']);
-    $nickname = ucwords($_POST['nickname']);
-    $email = ucwords($_POST['email']);
+    //$nickname = ucwords($_POST['nickname']);
+    $email = $_POST['email'];
+    $address = ucwords($_POST['address']);
+    $gender = $_POST['gender'];     
    
     
-    $result = $user->update_user($lastname,$firstname, $access, $user_id, $email, $nickname);
+    $result = $user->update_user($lastname,$firstname, $access, $user_id, $email, $address,$gender);
     if($result){
         header('location: ../index.php?page=settings&subpage=users&action=modify&id='.$user_id);
     }

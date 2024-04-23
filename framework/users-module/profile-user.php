@@ -49,7 +49,7 @@ $address = $user->get_user_address($user_id);
       <div class="user-info-left">
         <p>First Name: <?php echo $firstName;?></p>
         <p>Last Name: <?php echo $lastName;?></p>
-        <p>Birthdate: *Insert Birthdate*</p>
+        <!--<p>Birthdate: *Insert Birthdate*</p>-->
         <p>Gender: <?php echo $gender;?></p>
       </div>
       <div class="user-info-right">
@@ -76,9 +76,9 @@ $address = $user->get_user_address($user_id);
 
 $count = 1;
 if($appointment->list_appointments() != false){
-foreach($appointment->list_appointments() as $value){
+foreach($appointment->list_appointments() as $value){ // Get  the list of appointments from the Appointment table
    extract($value);
-   if($appointment_lastname == $lastName){
+   if($appointment_lastname == $lastName){ // Conditions  to only show the user's appointment by using user's lastname
 ?>
       <tr id=<?php echo $appointment_lastname;?>>
         <td><?php echo $count;?></td>

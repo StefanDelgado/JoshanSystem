@@ -1,6 +1,8 @@
+<?php if ($user_access == 'Manager'){?>
 <div id="third-submenu">
     <a href="index.php?page=settings&subpage=users">List Users</a> | <a href="index.php?page=settings&subpage=users&action=create">Create User</a> | <a href="index.php?page=settings&subpage=users&action=modify">Edit User</a>
 </div>
+<?php }?>
 <div id="subcontent">
     <?php
       switch($action){

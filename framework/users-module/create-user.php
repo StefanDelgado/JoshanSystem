@@ -64,9 +64,6 @@
             <label for="lname">Last Name</label>
             <input type="text" id="lname" class="input" name="lastname" placeholder="Your last name.." required>
 
-            <label for="nname">Nickname</label>
-            <input type="text" id="nname" class="input" name="nickname" placeholder="Your nickname" required>
-
             <label for="gender">Gender</label>
             <select id="gender" name="gender">
               <option value="Male">Male</option>
@@ -87,19 +84,17 @@
 
             <label for="address">Address</label>
             <input type="text" id="address" class="input" name="address" placeholder="Your address.." required>
-
-            <label for="map">Map:</label>
+            <!--<label for="map">Map:</label>
             <a href="https://www.google.com/maps" target="_blank"><button type="button">Maps</button></a>
-            <br>
-
+            <br> -->
             <label for="password">Password</label>
             <input type="password" id="password" class="input" name="password" placeholder="Enter password.." required>
 
             <label for="confirmpassword">Confirm Password</label>
             <input type="password" id="confirmpassword" class="input" name="confirmpassword" placeholder="Confirm password.." required>
 
-            <label for="username">Username</label>
-            <input type="text" autocomplete="off" name="username" class="input" placeholder="Username">
+            <!-- <label for="username">Username</label>
+            <input type="text" autocomplete="off" name="username" class="input" placeholder="Username"> -->
         </div>
         <div id="button-block">
             <input type="submit" value="Save">

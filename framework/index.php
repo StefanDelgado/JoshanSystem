@@ -3,6 +3,7 @@ include_once 'classes/class.user.php';
 include_once 'classes/class.appointment.php';
 include_once 'classes/class.event.php';
 include 'config/config.php';
+
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
@@ -92,7 +93,11 @@ $user_access = $user->get_user_access($user_id);
       </div>
       <ul class="navigation">
         <li><a href="index.php" class="<?php echo ($page === '' || $page === 'home') ? 'active' : ''; ?>">Home</a></li>
+        <?php if ($user_access == 'Manager'){?>
         <li><a href="index.php?page=appointment" class="<?php echo ($page === 'appointment') ? 'active' : ''; ?>">Appointment</a></li>
+        <?php } else {?>
+            <li><a href="index.php?page=appointment&subpage=appointment&action=create">Create an Appointment</a></li>
+        <?php }?>
         <!--<li><a href="index.php?page=event" class="<?php //echo ($page === 'event') ? 'active' : ''; ?>">Event</a></li> -->
         <li><a href="index.php?page=settings" class="<?php echo ($page === 'settings') ? 'active' : ''; ?>">Settings</a></li>
         <li><a href="logout.php">Logout</a></li>

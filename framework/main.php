@@ -2,9 +2,13 @@
 
 
       <div class="container">
+      <?php if ($user_access == 'Manager'){?>
         <div class="header">
           <h1>Welcome to the Admin Panel</h1>
         </div>
+        <?php } else {?>
+          <h1>Welcome to the Panel</h1>
+        <?php }?>
         <div class="content-container">
           <div class="content">
             <!-- Your content here -->
@@ -12,8 +16,11 @@
 <br>
 ***WORK IN PROGRESS***
 <br><br><br>
+<!-- Admin contents-->
+<?php if ($user_access == 'Manager'){?>
 Upcoming appointment
 <div id="subcontent">
+
     <table class="data-table">
       <tr>
         <th>#</th>
@@ -52,6 +59,7 @@ foreach($appointment->list_appointments() as $value){
 }
 ?>
     </table>
+    
     <br><br>
 To do list:<br>
 - Search button functions <br>
@@ -60,6 +68,7 @@ To do list:<br>
 - Events CRUD <br>
 - Access levels <br>
 - Session out <br>
+<?php }?>
 
 
 </div>
