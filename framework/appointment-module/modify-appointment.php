@@ -24,7 +24,7 @@ foreach($appointment->list_appointments() as $value){
         <td><?php echo $appointment_purpose;?></td>
         <td><?php echo $appointment_date;?></td>
         <td><?php echo date('g:i A', strtotime($appointment_time)); ?></td>
-        <td><button class="open-button" onclick="openForm('<?php echo $appointment_id; ?>','<?php echo $appointment_lastname;?>','<?php echo $appointment_firstname;?>','<?php echo $appointment_purpose;?>','<?php echo $appointment_date;?>','<?php echo $appointment_time;?>')">Edit</button> | <a href="processes/process.appointment.php?action=delete&appointment_id=<?php echo $appointment_id; ?>" id="delete-button-<?php echo $appointment_id; ?>" class="delete-button">Delete</a></td>
+        <td><button class="open-button" onclick="openForm('<?php echo $appointment_id; ?>','<?php echo $appointment_lastname;?>','<?php echo $appointment_firstname;?>','<?php echo $appointment_purpose;?>','<?php echo $appointment_date;?>','<?php echo $appointment_time;?>')">Edit</button> | <a href="processes/process.appointment.php?action=delete&appointment_id=<?php echo $appointment_id;?>" id="delete-button-<?php echo $appointment_id;?>" class="delete-button" onclick="return confirmDelete('<?php echo $appointment_id;?>')">Delete</a></td>
       </tr>
       <tr>
 <?php

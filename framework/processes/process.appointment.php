@@ -1,5 +1,7 @@
 <?php
 include '../classes/class.appointment.php';
+include '../classes/class.user.php';
+
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -25,16 +27,39 @@ switch($action){
 }
 
 function create_new_appointment(){
-	$appointment = new Appointment();
+	$user = new User();
     $lastName = ucwords($_POST['lname']);
     $firstName = ucwords($_POST['fname']);
     $purpose = ucwords($_POST['purpose']);
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $result = $appointment->new_appointment($lastName,$firstName,$purpose,$date,$time);
-    if($result){
-        $id = $appointment->get_appointment_id($lastName);
-        header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$id);
+
+    // User Check
+    $user_check = false;
+    foreach($user->list_users() as $value){
+        extract($value);
+        if($user_firstname == $firstName &&  $user_lastname == $lastName){
+            $user_check = true;
+            
+            $appointment = new Appointment();
+            $result = $appointment->new_appointment($lastName,$firstName,$purpose,$date,$time);
+            if($result){
+                $id = $appointment->get_appointment_id($lastName);
+                header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$id);
+            }
+            break;
+        } 
+    }
+    if($user_check == false) {
+        echo "<script type='text/javascript'>
+            alert('Invalid first name and last name');
+            setTimeout(function() {
+                window.location.href = '../index.php?page=appointment&subpage=appointment&action=create';
+            }, 100);
+        </script>";
+    	//header("location: ../index.php?page=appointment&subpage=appointment&action=create");
+        
+
     }
 }
 
@@ -55,12 +80,17 @@ function update_appointment(){
 }
 
 function delete_appointment(){
-	$appointment_id = isset($_GET['appointment_id']) ? $_GET['appointment_id'] : '';
+    
+	$appointment_id = isset($_GET['appointment_id'])? $_GET['appointment_id'] : '';
     $appointment = new appointment();
-    $result = $appointment->delete_appointment($appointment_id);
-    if ($result) {
-        header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id=' . $appointment_id);
-    }
+    
+    
+  
+        $result = $appointment->delete_appointment($appointment_id);
+        if ($result) {
+            header('location:../index.php?page=appointment&subpage=appointment&action=profile&id='. $appointment_id);
+        }
+    
 }
 // Update Status
 function update_appointment_status(){

@@ -38,4 +38,6 @@ window.onclick = function(event) {
 }
 });
 
-
+function confirmDelete(appointment_id) {
+  return confirm('Are you sure you want to delete this appointment?');
+}
