@@ -52,6 +52,41 @@
         margin-top: 10px;
         display: block;
     }
+    select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 20rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  color: black;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* <option> colors */
+  option {
+    color: inherit;
+    background-color: var(--option-bg);
+  }
+}
+:root {
+  --arrow-bg: rgba(128,128,128, 0.3);
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: black;
+  --select-bg: rgba(255, 255, 255, 0.2);
+}
 </style>
 <?php if (isset($_GET['errmsg'])) { echo "<p style='color: red'>" . htmlspecialchars($_GET['errmsg']) . "</p>"; } ?>
 <h3>Provide the Required Information</h3>
