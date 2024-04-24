@@ -45,7 +45,7 @@ function create_new_appointment(){
             $result = $appointment->new_appointment($lastName,$firstName,$purpose,$date,$time);
             if($result){
                 $id = $appointment->get_appointment_id($lastName);
-                header('location: ../index.php?page=appointment&subpage=appointment&action=profile&id='.$id);
+                header('location: ../index.php');
             }
             break;
         } 
