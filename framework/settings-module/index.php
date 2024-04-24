@@ -1,4 +1,3 @@
-<div id="content">
 <div id="second-submenu">
     <?php if ($user_access == 'Manager'){?>
     <a href="index.php?page=settings&subpage=users">Users</a> |
@@ -8,6 +7,7 @@
     <a href="index.php?page=settings&subpage=systems">System Settings</a>
 </div>
 
+<div id="content">
     <?php
       switch($subpage){
                 case 'users':
