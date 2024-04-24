@@ -9,7 +9,7 @@ body {
 
 .sidebar {
   background: #d5bdc3;
-  color: #fff;
+  color: black;
   width: 250px;
   height: 100vh;
   padding: 20px;
@@ -65,12 +65,11 @@ body {
 }
 
 .navigation a {
-  display: block;
-  color: #fff;
+  display: flex;
+  color: black;
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
 }
 
 .navigation a:hover {

@@ -46,6 +46,7 @@ if(!$user->get_session()){
 }
 $user_id = $user->get_user_id($_SESSION['user_email']);
 $user_name = $user->get_user_firstname($user_id);
+$user_lname = $user->get_user_lastname($user_id);
 $user_access = $user->get_user_access($user_id);
 ?>
 <!DOCTYPE html>
@@ -102,9 +103,6 @@ $user_access = $user->get_user_access($user_id);
         <li><a href="index.php?page=settings" class="<?php echo ($page === 'settings') ? 'active' : ''; ?>">Settings</a></li>
         <li><a href="logout.php">Logout</a></li>
       </ul>
-      <div class="footer">
-        <p>&copy; HUMBLEZ FOR LYFE</p>
-      </div>
       <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
     </div>
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../classes/class.appointment.php';
 include '../classes/class.user.php';
 
@@ -27,9 +28,17 @@ switch($action){
 }
 
 function create_new_appointment(){
+   
 	$user = new User();
+    $user_id = $user->get_user_id($_SESSION['user_email']);
+    $user_access = $user->get_user_access($user_id);
+    if ($user_access != 'Manager'){
+            $lastName = $_POST['lname'];
+            $firstName = $_POST['fname'];
+    } else {
     $lastName = ucwords($_POST['lname']);
     $firstName = ucwords($_POST['fname']);
+    }
     $purpose = ucwords($_POST['purpose']);
     $date = $_POST['date'];
     $time = $_POST['time'];
@@ -51,16 +60,17 @@ function create_new_appointment(){
         } 
     }
     if($user_check == false) {
-        echo "<script type='text/javascript'>
+        /*echo "<script type='text/javascript'>
             alert('Invalid first name and last name');
             setTimeout(function() {
                 window.location.href = '../index.php?page=appointment&subpage=appointment&action=create';
             }, 100);
-        </script>";
+        </script>"; */
     	//header("location: ../index.php?page=appointment&subpage=appointment&action=create");
         
 
     }
+
 }
 
 function update_appointment(){

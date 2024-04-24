@@ -41,3 +41,26 @@ window.onclick = function(event) {
 function confirmDelete(appointment_id) {
   return confirm('Are you sure you want to delete this appointment?');
 }
+
+// CLIENT's side
+document.querySelector('form.form-container').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get the updated values from the form fields
+  var firstName = document.getElementById("fname").value;
+  var lastName = document.getElementById("lname").value;
+
+  // Send an AJAX request to update the appointment
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'processes/process.appointment.php?action=update', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Redirect to the appointment profile page
+      window.location.href = 'index.php?page=settings&subpage=appointments&action=profile&id=' + appointmentId;
+    } else {
+      console.log('Error: ' + xhr.statusText);
+    }
+  };
+  xhr.send('lname=' + lastName + '&fname=' + firstName);
+});
