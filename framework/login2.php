@@ -53,7 +53,7 @@ if(isset($_REQUEST['submit'])){
         </div>
         <button type="submit" name="submit" value="Submit" class="btn">Log in</button>
         <div class="register-link">
-            <p>Don't have an account? <a href="#">Register</a></p>
+            <!--<p>Don't have an account? <a href="#">Register</a></p> -->
         </div>
     </form>
 </div>
