@@ -12,6 +12,7 @@
     <div class="logo">
       <img src="https://i.pinimg.com/736x/2b/81/a8/2b81a830e7be62b2437a493d2867c3d8.jpg" alt="Company Logo">
     </div>
+    <br><br><br>
     <div class="company-name">
       <span style="font-size: 36px; font-family: 'Roboto', sans-serif; font-weight: bold; color: #d5bdc3;">HUMBLEZ APPOINTMENT SYSTEM</span>
     </div>

@@ -51,10 +51,11 @@ select {
   --select-bg: rgba(255, 255, 255, 0.2);
 }
 input[type="date"]{
-    background-color: grey;
+    background-color: #c5c6c7;
+
     padding: 1em;
     font-family: "Roboto Mono", monospace;
-    color: #ffffff;
+    color: black;
     font-size: 18px;
     border: none;
     outline: none;
@@ -133,6 +134,46 @@ input[type="date"]{
 <section class="appointment-form">
     <h3>Provide the Required Information</h3>
     <div class="form-block">
+      <!-- Client -->
+        <form method="POST" action="processes/process.appointment.php?action=new">
+            <div class="form-block-half">
+              <?php if ($user_access != 'Manager'){
+                $lname = $user_lname;
+                $fname = $user_name; 
+                ?>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" class="input" name="lname"  placeholder="Please put <?=$user_lname?>"required>
+
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" class="input" name="fname"  placeholder="Please put <?=$user_name?>"required> 
+                
+                <label for="purpose">Purpose</label>
+                <input type="text" id="purpose" class="input" name="purpose" placeholder="State your purpose.."required>
+            </div>
+            <br>
+
+            <div class="form-block-half">
+                <label for="date">Date</label>
+                <br>
+                <input type="date" id="date" name="date" min="<?php echo date('Y-m-d'); ?>" required>
+                <br>
+
+                <label for="time">Time</label>
+                <br>
+                <select id="time" name="time">
+                    <option value="8:00">8:00 am</option>
+                    <option value="10:00">10:00 am</option>
+                    <option value="13:00">1:00 pm</option>
+                    <option value="15:00">3:00 pm</option>
+                </select>
+            </div>
+
+            <div id="button-block">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <!-- Admin -->
+        <?php }else {?>
         <form method="POST" action="processes/process.appointment.php?action=new">
             <div class="form-block-half">
                 <label for="lname">Last Name</label>
@@ -170,5 +211,6 @@ input[type="date"]{
 </button>
             </div>
         </form>
+        <?php }?>
     </div>
 </section>
