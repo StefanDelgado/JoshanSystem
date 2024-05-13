@@ -3,8 +3,10 @@
 <div id="third-submenu">
     <a href="index.php?page=appointment&subpage=appointment">Home</a> | 
     <a href="index.php?page=appointment&subpage=appointment&action=view">Records</a> | 
+    <a href="index.php?page=appointment&subpage=appointment&action=download">Download</a> |
     <a href="index.php?page=appointment&subpage=appointment&action=create">Create</a> | 
     <a href="index.php?page=appointment&subpage=appointment&action=modify">Edit</a>
+
 </div>
 <?php }?>
 <div id="subcontent">
@@ -21,6 +23,9 @@
                 break;
                 case 'result':
                     require_once 'appointment-module/search-appointment.php';
+                break;
+                case 'download':
+                    require_once 'appointment-module/generatephp.php';
                 break;
                 default:
                     require_once 'appointment-module/main.php';
